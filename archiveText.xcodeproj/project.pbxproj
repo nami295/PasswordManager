@@ -14,10 +14,10 @@
 		2A32C7781B0E1C6A004EFE7F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A32C7761B0E1C6A004EFE7F /* LaunchScreen.xib */; };
 		2A32C7841B0E1C6A004EFE7F /* archiveTextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A32C7831B0E1C6A004EFE7F /* archiveTextTests.swift */; };
 		2A32C7951B0EDDF3004EFE7F /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A32C7941B0EDDF3004EFE7F /* ViewController3.swift */; };
+		2A4B39191B7592A5003EEBC0 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4B39181B7592A5003EEBC0 /* SwiftyJSON.swift */; };
 		2A53FCAC1B51E8A40004DCCA /* 設計：UI in Resources */ = {isa = PBXBuildFile; fileRef = 2A53FCAB1B51E8A40004DCCA /* 設計：UI */; };
 		2A6683241B23355100FFCC8A /* ViewController7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6683231B23355100FFCC8A /* ViewController7.swift */; };
 		2A909FB61B1B2974009D0EE3 /* 設計：新規登録画面について in Resources */ = {isa = PBXBuildFile; fileRef = 2A909FB51B1B2974009D0EE3 /* 設計：新規登録画面について */; };
-		2AD6FE6E1B440EA40086DD68 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD6FE6D1B440EA40086DD68 /* SwiftyJSON.swift */; };
 		2AD7E0B31B11B3F7001CD83E /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD7E0B21B11B3F7001CD83E /* GlobalData.swift */; };
 		2AE6369D1B1945DC00E2AAC1 /* 設計 in Resources */ = {isa = PBXBuildFile; fileRef = 2AE6369C1B1945DC00E2AAC1 /* 設計 */; };
 		2AE660911B0F732700CECBF9 /* ViewController5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE660901B0F732700CECBF9 /* ViewController5.swift */; };
@@ -47,11 +47,11 @@
 		2A32C7821B0E1C6A004EFE7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A32C7831B0E1C6A004EFE7F /* archiveTextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = archiveTextTests.swift; sourceTree = "<group>"; };
 		2A32C7941B0EDDF3004EFE7F /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
+		2A4B39171B7592A5003EEBC0 /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwiftyJSON.h; path = ../../SwiftyJSON.git/Source/SwiftyJSON.h; sourceTree = "<group>"; };
+		2A4B39181B7592A5003EEBC0 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = ../../SwiftyJSON.git/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		2A53FCAB1B51E8A40004DCCA /* 設計：UI */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "設計：UI"; sourceTree = "<group>"; };
 		2A6683231B23355100FFCC8A /* ViewController7.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController7.swift; sourceTree = "<group>"; };
 		2A909FB51B1B2974009D0EE3 /* 設計：新規登録画面について */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "設計：新規登録画面について"; sourceTree = "<group>"; };
-		2AD6FE6C1B440E950086DD68 /* SwiftyJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SwiftyJSON.h; path = ../../../SwiftyJSON.git/Source/SwiftyJSON.h; sourceTree = "<group>"; };
-		2AD6FE6D1B440EA40086DD68 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = ../../../SwiftyJSON.git/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
 		2AD7E0B21B11B3F7001CD83E /* GlobalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
 		2AE6369C1B1945DC00E2AAC1 /* 設計 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "設計"; sourceTree = "<group>"; };
 		2AE660901B0F732700CECBF9 /* ViewController5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController5.swift; sourceTree = "<group>"; };
@@ -98,8 +98,8 @@
 		2A32C76A1B0E1C6A004EFE7F /* archiveText */ = {
 			isa = PBXGroup;
 			children = (
-				2AD6FE6C1B440E950086DD68 /* SwiftyJSON.h */,
-				2AD6FE6D1B440EA40086DD68 /* SwiftyJSON.swift */,
+				2A4B39171B7592A5003EEBC0 /* SwiftyJSON.h */,
+				2A4B39181B7592A5003EEBC0 /* SwiftyJSON.swift */,
 				2A32C76D1B0E1C6A004EFE7F /* AppDelegate.swift */,
 				2A32C76F1B0E1C6A004EFE7F /* ViewController.swift */,
 				2AD7E0B21B11B3F7001CD83E /* GlobalData.swift */,
@@ -254,7 +254,7 @@
 				2A32C7701B0E1C6A004EFE7F /* ViewController.swift in Sources */,
 				2A32C7951B0EDDF3004EFE7F /* ViewController3.swift in Sources */,
 				2AE660931B10AEE800CECBF9 /* ViewController6.swift in Sources */,
-				2AD6FE6E1B440EA40086DD68 /* SwiftyJSON.swift in Sources */,
+				2A4B39191B7592A5003EEBC0 /* SwiftyJSON.swift in Sources */,
 				2A32C76E1B0E1C6A004EFE7F /* AppDelegate.swift in Sources */,
 				2AD7E0B31B11B3F7001CD83E /* GlobalData.swift in Sources */,
 				2A6683241B23355100FFCC8A /* ViewController7.swift in Sources */,
