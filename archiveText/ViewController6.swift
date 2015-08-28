@@ -15,11 +15,31 @@ class ViewController6: UIViewController {
     var selectedSectionNum = 0
     var selectedItemNum = 0
     var backUpName = ""
-    @IBOutlet weak var nameText: UITextField!
-    @IBOutlet weak var idText: UITextField!
-    @IBOutlet weak var passwordText: UITextField!
-    @IBOutlet weak var mailText: UITextField!
-    @IBOutlet weak var nameKanaText: UITextField!
+    @IBOutlet weak var nameText: UITextField!//1番目
+    @IBOutlet weak var idText: UITextField!//3番目
+    @IBOutlet weak var passwordText: UITextField!//4番目
+    @IBOutlet weak var mailText: UITextField!//5番目
+    @IBOutlet weak var nameKanaText: UITextField!//2番目
+    
+    @IBAction func nameDidEndOnExit(sender: AnyObject) {
+        nameKanaText.becomeFirstResponder();
+    }
+    
+    @IBAction func nameKanaDidEndOnExit(sender: AnyObject) {
+        idText.becomeFirstResponder();
+    }
+    
+    @IBAction func idDidEndOnExit(sender: AnyObject) {
+        passwordText.becomeFirstResponder();
+    }
+    
+    @IBAction func passwordDidEndOnExit(sender: AnyObject) {
+        mailText.becomeFirstResponder();
+    }
+    
+    @IBAction func mailDidEndOnExit(sender: AnyObject) {
+        self.view.endEditing(true)
+    }
     
     @IBOutlet weak var changeButton: UIBarButtonItem!
     

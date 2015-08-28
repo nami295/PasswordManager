@@ -134,6 +134,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         mySearchBar.text = ""
         refreshList(all:true)
+        self.view.endEditing(true)
     }
     
     /*

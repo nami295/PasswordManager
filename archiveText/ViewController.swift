@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//使ってない?ああああ
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -15,9 +15,6 @@ class ViewController: UIViewController {
         let dir = NSHomeDirectory().stringByAppendingPathComponent("Documents");
         let filePath = dir.stringByAppendingPathComponent("data.dat");
         
-        //-----------------------
-        //データ保存
-        //-----------------------
         let nsdic = [
             "name":"name",
             "id":"id",
@@ -34,18 +31,16 @@ class ViewController: UIViewController {
             print("データの保存に失敗しました。");
         }
         
-        //-----------------------
         //復元
-        //-----------------------
-        let nsarr_ = NSKeyedUnarchiver.unarchiveObjectWithFile(filePath) as! NSArray
-        var count = 0
-        for elem in nsarr_
-        {
-            count++
-            var json:JSON = JSON(rawValue:elem)!
-            print("\(count):", appendNewline: false);
-            print(json["name"])
-        }
+//        let nsarr_ = NSKeyedUnarchiver.unarchiveObjectWithFile(filePath) as! NSArray
+//        var count = 0
+//        for elem in nsarr_
+//        {
+//            count++
+//            var json:JSON = JSON(rawValue:elem)!
+//            print("\(count):", appendNewline: false);
+//            print(json["name"])
+//        }
         
         
     }

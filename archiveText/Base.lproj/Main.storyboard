@@ -25,33 +25,44 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="読みがな" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z2y-vR-lLF">
                                 <rect key="frame" x="241" y="135" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
                                     <action selector="editingChanged_yomigana:" destination="vXZ-lx-hvc" eventType="editingChanged" id="Mbu-aa-svh"/>
+                                    <action selector="nameKanaDidEndOnExit:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="UYc-DW-qSA"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="idText" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PgW-vf-IpB">
                                 <rect key="frame" x="241" y="175" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <connections>
+                                    <action selector="idDidEndOnExit:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="N1M-8g-3N2"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="passwordText" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZDr-PU-DTT">
                                 <rect key="frame" x="241" y="215" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <connections>
+                                    <action selector="passwordDidEndOnExit:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="qpj-ae-qX4"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="nameText" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="名前" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MAF-GK-sqH">
                                 <rect key="frame" x="241" y="95" width="119" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="vXZ-lx-hvc" eventType="editingChanged" id="5hd-iy-0BI"/>
+                                    <action selector="nameDidEndOnExit:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="oUD-Oj-LfX"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="mailText" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lKA-fg-Ivc">
                                 <rect key="frame" x="241" y="255" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <connections>
+                                    <action selector="mailDidEndOnExit:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="WQk-RV-u70"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -115,32 +126,43 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="名前" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ezn-c4-0Ce">
                                 <rect key="frame" x="241" y="95" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="ajt-fw-rDH" eventType="editingChanged" id="oLV-tu-eg4"/>
+                                    <action selector="nameDidEndOnExit:" destination="ajt-fw-rDH" eventType="editingDidEndOnExit" id="pPr-94-e4D"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3eC-10-ct7">
                                 <rect key="frame" x="241" y="175" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <connections>
+                                    <action selector="idDidEndOnExit:" destination="ajt-fw-rDH" eventType="editingDidEndOnExit" id="xKS-LC-EsD"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="m1P-GJ-bw7">
                                 <rect key="frame" x="241" y="215" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <connections>
+                                    <action selector="passwordDidEndOnExit:" destination="ajt-fw-rDH" eventType="editingDidEndOnExit" id="Anw-eq-gfX"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="メールアドレス" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mR3-Sv-iMe">
                                 <rect key="frame" x="241" y="255" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <connections>
+                                    <action selector="mailDidEndOnExit:" destination="ajt-fw-rDH" eventType="editingDidEndOnExit" id="5RL-WD-c8Z"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="読みがな" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QuD-el-e7F">
                                 <rect key="frame" x="241" y="135" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
                                     <action selector="editingChanged_yomigana:" destination="ajt-fw-rDH" eventType="editingChanged" id="AB7-kP-J2Y"/>
+                                    <action selector="nameKanaDidEndOnExit:" destination="ajt-fw-rDH" eventType="editingDidEndOnExit" id="Ef3-V4-VcI"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyL-8h-4qa">
@@ -265,6 +287,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeK-M6-IbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="KfB-w1-Awa"/>
             </objects>
             <point key="canvasLocation" x="732" y="1087"/>
         </scene>
