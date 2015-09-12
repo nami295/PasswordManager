@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GoogleMobileAds
+
 ///個別
 class ViewController6: UIViewController {
     
@@ -43,16 +45,13 @@ class ViewController6: UIViewController {
     
     @IBOutlet weak var changeButton: UIBarButtonItem!
     
+    private var bannerView_: GADBannerView!
+    
     //名前
     @IBAction func editingChanged(sender: AnyObject) {
         do{
-            
             let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions())
-            
-            //        let nsSentence: NSString = nameText.text
             let nsSentence: NSString = nameText.text!
-            
-            //        if let result = GlobalData.regex_yomigana?.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
             if let _ = regex_yomigana.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
             {
                 nameKanaText.text=nameText.text
@@ -61,6 +60,7 @@ class ViewController6: UIViewController {
         }catch{
         }
     }
+    
     //読みがな
     @IBAction func editingChanged_yomigana(sender: AnyObject) {
         controlRegisterButton()
@@ -73,6 +73,7 @@ class ViewController6: UIViewController {
             changeButton.enabled = true
         }
     }
+    
     //変更ボタン
     @IBAction func change(sender: AnyObject) {
         
@@ -87,12 +88,7 @@ class ViewController6: UIViewController {
             if(editing){
                 do{
                     let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん0-9]*$", options: NSRegularExpressionOptions())
-                    
-                    
-                    //                var nsSentence: NSString = nameKanaText.text
                     let nsSentence: NSString = nameKanaText.text!
-//                    nsSentence = (nsSentence as String).substringToIndex(advance((nsSentence as String).startIndex, 1))
-                    //                if let result = GlobalData.regex_yomigana?.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
                     if let _ = regex_yomigana.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
                     {
                         //GlobalData.arrayの作り直し
@@ -125,13 +121,15 @@ class ViewController6: UIViewController {
                             )
                             ).addObject(add)
                         
-                        let successful = NSKeyedArchiver.archiveRootObject(GlobalData.getAllArray(), toFile:GlobalData.filePath);
-                        if (successful) {
-                            print("データの追加に成功しました。（データ編集）");
-                        }
-                        else{
-                            print("データの追加に失敗しました。（データ編集）");
-                        }
+                        NSKeyedArchiver.archiveRootObject(GlobalData.getAllArray(), toFile:GlobalData.filePath);
+                        
+//                        let successful = NSKeyedArchiver.archiveRootObject(GlobalData.getAllArray(), toFile:GlobalData.filePath);
+//                        if (successful) {
+//                            print("データの追加に成功しました。（データ編集）");
+//                        }
+//                        else{
+//                            print("データの追加に失敗しました。（データ編集）");
+//                        }
                     }
                     else{
                         showAlert("エラー", mySentence: "読みがなはひらがなまたは英字で入力してください")
@@ -173,17 +171,12 @@ class ViewController6: UIViewController {
             message: "本当に削除しますか？",
             preferredStyle: UIAlertControllerStyle.Alert)
         
-        //UIActionSheet
-//        let actionSheet:UIAlertController = UIAlertController(title:"sheet",
-//            message: "actinSheet",
-//            preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
         //Cancel 一つだけしか指定できない
         let cancelAction:UIAlertAction = UIAlertAction(title: "No",
             style: UIAlertActionStyle.Cancel,
             handler:{
                 (action:UIAlertAction) -> Void in
-                print("No")
+//                print("No")
         })
         
         //Default 複数指定可
@@ -191,23 +184,23 @@ class ViewController6: UIViewController {
             style: UIAlertActionStyle.Default,
             handler:{
                 (action:UIAlertAction) -> Void in
-                print("Yes")
+//                print("Yes")
                 
-                //GlobalData.arrayの作り直し
-                //name以外のもので作り直す（名前に重複がある場合全て消える）
-//                GlobalData.refreshList(self.backUpName,matchValid: false,perfectMatch: false)
+                //GlobalData.arrayの作り直し（name以外のもので作り直す（名前に重複がある場合全て消える））
                 GlobalData.refreshList(self.backUpName,matchValid: false)
                 
                 //セクションごとのarrayの作り直し
                 GlobalData.refreshAllList()
                 
-                let successful = NSKeyedArchiver.archiveRootObject(GlobalData.getAllArray(), toFile:GlobalData.filePath);
-                if (successful) {
-                    print("データの追加に成功しました。（データ削除）");
-                }
-                else{
-                    print("データの追加に失敗しました。（データ削除）");
-                }
+                NSKeyedArchiver.archiveRootObject(GlobalData.getAllArray(), toFile:GlobalData.filePath);
+                
+//                let successful = NSKeyedArchiver.archiveRootObject(GlobalData.getAllArray(), toFile:GlobalData.filePath);
+//                if (successful) {
+//                    print("データの追加に成功しました。（データ削除）");
+//                }
+//                else{
+//                    print("データの追加に失敗しました。（データ削除）");
+//                }
                 
                 // Segue を呼び出す
                 self.performSegueWithIdentifier("toNavigationController",sender: nil)
@@ -220,11 +213,8 @@ class ViewController6: UIViewController {
         
         //表示。UIAlertControllerはUIViewControllerを継承している。
         presentViewController(alert, animated: true, completion: nil)
-        
-        
-        
-
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let array_ = GlobalData.getRefferenceList(selectedSectionNum)
@@ -240,9 +230,20 @@ class ViewController6: UIViewController {
         passwordText.text = json["password"].string!
         mailText.text =     json["mail"].string!
         
+        //バナー広告
+        let displayWidth: CGFloat = self.view.frame.width
+        bannerView_ = GADBannerView()
+        bannerView_.adUnitID = "ca-app-pub-5418872710464793/7820166668";
+        bannerView_.rootViewController = self;
+        let request: GADRequest = GADRequest();
+        bannerView_.loadRequest(request);
+        bannerView_.frame = CGRectMake(0, 0, displayWidth, 50)
+        bannerView_.layer.position = CGPoint(
+            x: self.view.bounds.width/2,
+            y: 90)
+        self.view.addSubview(bannerView_)
+        
         controlRegisterButton()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

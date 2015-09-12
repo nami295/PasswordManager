@@ -4,6 +4,8 @@
 //
 
 import UIKit
+import GoogleMobileAds
+
 ///一覧
 class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
     
@@ -12,9 +14,11 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     var selectedItemNum = 0
     
     private var mySearchBar: UISearchBar!
-    
+    private var bannerView_: GADBannerView!
     
     override func viewDidLoad() {
+        
+//        print(GoogleMobileAds.GADRequest.sdkVersion);
         super.viewDidLoad()
         GlobalData.dir = NSHomeDirectory().stringByAppendingPathComponent("Documents");
         GlobalData.filePath = GlobalData.dir.stringByAppendingPathComponent("data.dat");
@@ -23,35 +27,62 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
         if(!fm.fileExistsAtPath(GlobalData.filePath)){
             let arr = GlobalData.getAllArray()
             
-            let successful = NSKeyedArchiver.archiveRootObject(arr, toFile:GlobalData.filePath);
-            if (successful) {
-                print("データの追加に成功しました。（ファイル存在チェック）");
-            }
-            else{
-                print("データの追加に失敗しました。（ファイル存在チェック）");
-            }
+            NSKeyedArchiver.archiveRootObject(arr, toFile:GlobalData.filePath);
+//            let successful = NSKeyedArchiver.archiveRootObject(arr, toFile:GlobalData.filePath);
+//            if (successful) {
+//                print("データの追加に成功しました。（ファイル存在チェック）");
+//            }
+//            else{
+//                print("データの追加に失敗しました。（ファイル存在チェック）");
+//            }
         }
         GlobalData.array = NSKeyedUnarchiver.unarchiveObjectWithFile(GlobalData.filePath) as! NSArray
         
         GlobalData.refreshAllList()
         let displayWidth: CGFloat = self.view.frame.width
-//        let displayHeight: CGFloat = self.view.frame.height
+        
+        //バナー広告
+        bannerView_ = GADBannerView()
+        bannerView_.adUnitID = "ca-app-pub-5418872710464793/7820166668";
+        bannerView_.rootViewController = self;
+        let request: GADRequest = GADRequest();
+        bannerView_.loadRequest(request);
+        bannerView_.frame = CGRectMake(0, 0, displayWidth, 50)
+        bannerView_.layer.position = CGPoint(
+            x: self.view.bounds.width/2,
+            y: 90)
+        
+        //検索バー
         mySearchBar = UISearchBar()
         mySearchBar.delegate = self
         mySearchBar.frame = CGRectMake(0, 0, displayWidth, 116)
-        mySearchBar.layer.position = CGPoint(x: self.view.bounds.width/2, y: 90)
+        mySearchBar.layer.position = CGPoint(
+            x: self.view.bounds.width/2,
+            y: (90 + bannerView_.frame.height)
+        )
         mySearchBar.showsCancelButton = true
         mySearchBar.showsBookmarkButton = false
         mySearchBar.searchBarStyle = UISearchBarStyle.Default
         mySearchBar.placeholder = "検索"
         mySearchBar.tintColor = UIColor.redColor()
         self.view.addSubview(mySearchBar)
+        self.view.addSubview(bannerView_)
+        
+        //アカウントリスト
         createTableView()
     }
+    
     func createTableView(){
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
-        let myTableView: UITableView = UITableView(frame: CGRect(x: 0, y: mySearchBar.frame.height, width: displayWidth, height: displayHeight - mySearchBar.frame.height))
+        let myTableView: UITableView = UITableView(
+            frame: CGRect(
+                x: 0,
+                y: bannerView_.frame.height + mySearchBar.frame.height,
+                width: displayWidth,
+                height: displayHeight - (bannerView_.frame.height + mySearchBar.frame.height)
+            )
+        )
         myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         myTableView.dataSource = self
         myTableView.delegate = self
@@ -73,7 +104,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     セクションのタイトルを返す.
     */
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        print("section index[\(section)]  section name[\(GlobalData.mySections[section])]")
+//        print("section index[\(section)]  section name[\(GlobalData.mySections[section])]")
         return GlobalData.mySections[section] as? String
     }
     
@@ -81,9 +112,6 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     Cellが選択された際に呼び出される.
     */
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        var json:JSON = JSON(rawValue:GlobalData.getRefferenceList(indexPath.section)[indexPath.row])!
-        
-//        var json:JSON = JSON(rawValue:GlobalData.getRefferenceList(indexPath.section)[indexPath.row])!
         selectedSectionNum = indexPath.section
         selectedItemNum = indexPath.row
         performSegueWithIdentifier("toSubViewController",sender: nil)
@@ -118,7 +146,6 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     テキストが変更される毎に呼ばれる
     */
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-//        var text = searchText
         let text = searchText
         if(text == ""){
             refreshList(all:true)
@@ -141,8 +168,6 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     Searchボタンが押された時に呼ばれる
     */
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        print("Searching", appendNewline: false)
-//        mySearchBar.text = ""
         self.view.endEditing(true)
     }
     
@@ -159,11 +184,9 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         //UITableViewの削除
         let views = self.view.subviews
-//        for (myView: UIView) in views as! [UIView]
         
         for myView: UIView in views
         {
-            
             if myView.isKindOfClass(UITableView) {
                 myView.removeFromSuperview()
             }

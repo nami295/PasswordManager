@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GoogleMobileAds
+
 ///新規登録
 class ViewController5: UIViewController {
     
@@ -38,13 +40,11 @@ class ViewController5: UIViewController {
     
     @IBOutlet weak var registrButton: UIBarButtonItem!
     
+    private var bannerView_: GADBannerView!
+    
     //名前
     @IBAction func editingChanged(sender: AnyObject) {
-        
-//        let nsSentence: NSString = nameText.text
         let nsSentence: NSString = nameText.text!
-//        if let result = GlobalData.regex_yomigana?.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
-        
         do{
             let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions())
             if let _ = regex_yomigana.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
@@ -70,6 +70,20 @@ class ViewController5: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //バナー広告
+        let displayWidth: CGFloat = self.view.frame.width
+        bannerView_ = GADBannerView()
+        bannerView_.adUnitID = "ca-app-pub-5418872710464793/7820166668";
+        bannerView_.rootViewController = self;
+        let request: GADRequest = GADRequest();
+        bannerView_.loadRequest(request);
+        bannerView_.frame = CGRectMake(0, 0, displayWidth, 50)
+        bannerView_.layer.position = CGPoint(
+            x: self.view.bounds.width/2,
+            y: 90)
+        self.view.addSubview(bannerView_)
+        
         controlRegisterButton()
     }
 
@@ -92,11 +106,7 @@ class ViewController5: UIViewController {
             
             let tmpArr = GlobalData.getNewList(nameKanaText.text!)
             if(tmpArr.count == 0){
-//                var nsSentence: NSString = nameKanaText.text
                 let nsSentence: NSString = nameKanaText.text!
-//                nsSentence = (nsSentence as String).substringToIndex(
-//                    advance((nsSentence as String).startIndex, 1))
-                
                 if let _ = regex_yomigana.firstMatchInString(
                     nsSentence as String,
                     options: NSMatchingOptions(),
@@ -128,21 +138,23 @@ class ViewController5: UIViewController {
                         nameText.text!.substringToIndex(
                             advance(nameText.text!.startIndex, 1)
                         )
-                        ).addObject(add)
-                    
-                    let successful = NSKeyedArchiver.archiveRootObject(
-                        GlobalData.getAllArray(), toFile:GlobalData.filePath
-                    );
-                    
-                    if (successful) {
-                        print("データの追加に成功しました。（新規登録）");
-                    }
-                    else{
-                        print("データの追加に失敗しました。（新規登録）");
-                    }
+                    ).addObject(add)
+                        
+                    NSKeyedArchiver.archiveRootObject(GlobalData.getAllArray(), toFile:GlobalData.filePath);
+                        
+//                    let successful = NSKeyedArchiver.archiveRootObject(
+//                        GlobalData.getAllArray(), toFile:GlobalData.filePath
+//                    );
+//                    
+//                    if (successful) {
+//                        print("データの追加に成功しました。（新規登録）");
+//                    }
+//                    else{
+//                        print("データの追加に失敗しました。（新規登録）");
+//                    }
                 }
                 else{
-                    showAlert("エラー", mySentence: "読みがなはひらがなまたは英字で入力してください")
+                    showAlert("エラー", mySentence: "読みがなはひらがなまたは英数字で入力してください")
                 }
             }
             else{

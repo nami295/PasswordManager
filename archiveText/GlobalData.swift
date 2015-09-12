@@ -165,40 +165,7 @@ struct GlobalData{
     
     
     static func getRefferenceList(str:NSString) -> NSMutableArray{
-        //original
-//        static let regex_azAZ = NSRegularExpression(pattern: "[a-zA-Z]", options: NSRegularExpressionOptions())
-//        static let regex_hira1 = NSRegularExpression(pattern: "[あ-おア-オ]", options: NSRegularExpressionOptions())
-//        static let regex_hira2 = NSRegularExpression(pattern: "[か-こカ-コ]", options: NSRegularExpressionOptions())
-//        static let regex_hira3 = NSRegularExpression(pattern: "[さ-そサ-ソ]", options: NSRegularExpressionOptions())
-//        static let regex_hira4 = NSRegularExpression(pattern: "[た-とタ-ト]", options: NSRegularExpressionOptions())
-//        static let regex_hira5 = NSRegularExpression(pattern: "[な-のナ-ノ]", options: NSRegularExpressionOptions())
-//        static let regex_hira6 = NSRegularExpression(pattern: "[は-ほハ-ホ]", options: NSRegularExpressionOptions())
-//        static let regex_hira7 = NSRegularExpression(pattern: "[ま-もマ-モ]", options: NSRegularExpressionOptions())
-//        static let regex_hira8 = NSRegularExpression(pattern: "[や-よヤ-ヨ]", options: NSRegularExpressionOptions())
-//        static let regex_hira9 = NSRegularExpression(pattern: "[ら-ろラ-ロ]", options: NSRegularExpressionOptions())
-//        static let regex_hira10 = NSRegularExpression(pattern: "[わ-んワ-ン]", options: NSRegularExpressionOptions())
-//        static let regex_yomigana = NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions())
-//        var regex_azAZ = NSRegularExpression();
-//        var regex_hira1 = NSRegularExpression();
-//        var regex_hira2 = NSRegularExpression();
-//        var regex_hira3 = NSRegularExpression();
-//        var regex_hira4 = NSRegularExpression();
-//        var regex_hira5 = NSRegularExpression();
-//        var regex_hira6 = NSRegularExpression();
-//        var regex_hira7 = NSRegularExpression();
-//        var regex_hira8 = NSRegularExpression();
-//        var regex_hira9 = NSRegularExpression();
-//        var regex_hira10 = NSRegularExpression();
-//        var regex_yomigana = NSRegularExpression();
-        
-//        do{
-//            try regex_azAZ = NSRegularExpression(pattern: "[a-zA-Z]", options: NSRegularExpressionOptions())
-//        }
-//        catch{
-//        }
-        
         do{
-//            let regex_azAZ = try NSRegularExpression(pattern: "[a-zA-Z]", options: NSRegularExpressionOptions())
             let regex_hira1 = try NSRegularExpression(pattern: "[あ-おア-オ]", options: NSRegularExpressionOptions())
             let regex_hira2 = try NSRegularExpression(pattern: "[か-こカ-コ]", options: NSRegularExpressionOptions())
             let regex_hira3 = try NSRegularExpression(pattern: "[さ-そサ-ソ]", options: NSRegularExpressionOptions())
@@ -209,9 +176,6 @@ struct GlobalData{
             let regex_hira8 = try NSRegularExpression(pattern: "[や-よヤ-ヨ]", options: NSRegularExpressionOptions())
             let regex_hira9 = try NSRegularExpression(pattern: "[ら-ろラ-ロ]", options: NSRegularExpressionOptions())
             let regex_hira10 = try NSRegularExpression(pattern: "[わ-んワ-ン]", options: NSRegularExpressionOptions())
-//            let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions())
-
-        
             if(str == "a"){
                 return item_a
             }
@@ -422,9 +386,6 @@ struct GlobalData{
             let regex_hira8 = try NSRegularExpression(pattern: "[や-よヤ-ヨ]", options: NSRegularExpressionOptions())
             let regex_hira9 = try NSRegularExpression(pattern: "[ら-ろラ-ロ]", options: NSRegularExpressionOptions())
             let regex_hira10 = try NSRegularExpression(pattern: "[わ-んワ-ン]", options: NSRegularExpressionOptions())
-//                        let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions())
-        
-        
             if let _ = regex_azAZ.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 sec = str.lowercaseString
             }
@@ -570,11 +531,11 @@ struct GlobalData{
             arr.append(elem as! String)
         }
         //配列のソート
-        print("////////////")
-        print(arr)
+//        print("////////////")
+//        print(arr)
         arr.sortInPlace {$0 < $1}
-        print(arr)
-        print("////////////")
+//        print(arr)
+//        print("////////////")
         
         //セクションのリストを空に
         GlobalData.mySections.removeAllObjects()

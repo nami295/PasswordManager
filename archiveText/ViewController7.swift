@@ -7,11 +7,26 @@
 //
 
 import UIKit
+import GoogleMobileAds
+
 //サマリ
 class ViewController7: UIViewController {
+    private var bannerView_: GADBannerView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //バナー広告
+        let displayWidth: CGFloat = self.view.frame.width
+        bannerView_ = GADBannerView()
+        bannerView_.adUnitID = "ca-app-pub-5418872710464793/7820166668";
+        bannerView_.rootViewController = self;
+        let request: GADRequest = GADRequest();
+        bannerView_.loadRequest(request);
+        bannerView_.frame = CGRectMake(0, 0, displayWidth, 50)
+        bannerView_.layer.position = CGPoint(
+            x: self.view.bounds.width/2,
+            y: 90)
 
         var text = "";
         var total = 0;
@@ -43,18 +58,17 @@ class ViewController7: UIViewController {
             }
             cnt++
         }
-        let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
         let myTextView = UITextView()
-        myTextView.frame = CGRectMake(0, 0, displayWidth, displayHeight)
+        myTextView.frame = CGRectMake(
+            0,
+            bannerView_.frame.height,
+            displayWidth,
+            (displayHeight - bannerView_.frame.height))
         myTextView.text = text
         
-//        let myScrollView = UIScrollView()
-//        myScrollView.frame = CGRectMake(0, 0, displayWidth, displayHeight)
-//        myScrollView.addSubview(myTextView)
-//        myScrollView.keyboardDismissMode
-        
         self.view.addSubview(myTextView)
+        self.view.addSubview(bannerView_)
     }
 
     override func didReceiveMemoryWarning() {
