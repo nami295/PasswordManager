@@ -49,16 +49,18 @@ class ViewController6: UIViewController {
     
     //名前
     @IBAction func editingChanged(sender: AnyObject) {
-        do{
-            let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions())
+//        do{//Swift2.0
+        //            let regex_yomigana =  try NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions())//Swift2.0
+        let regex_yomigana =  NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions(), error: nil)
             let nsSentence: NSString = nameText.text!
-            if let _ = regex_yomigana.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
+//            if let _ = regex_yomigana.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))//Swift2.0
+            if let _ = regex_yomigana!.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
             {
                 nameKanaText.text=nameText.text
             }
             controlRegisterButton()
-        }catch{
-        }
+//        }catch{//Swift2.0
+//        }//Swift2.0
     }
     
     //読みがな
@@ -78,21 +80,26 @@ class ViewController6: UIViewController {
     @IBAction func change(sender: AnyObject) {
         
         
-        let tmpArr = GlobalData.getNewList(nameKanaText.text!)
+        let tmpArr = GlobalData.getNewList(text: nameKanaText.text!)
             var editing = tmpArr.count == 0
             if(!editing){
-                var json:JSON = JSON(rawValue:tmpArr[0])!
-                editing = tmpArr.count == 1 && json["nameKana"].string == backUpName
+                //var json:JSON = JSON(rawValue:tmpArr[0])!
+                let json: Dictionary = tmpArr[0] as NSDictionary
+                
+                //editing = tmpArr.count == 1 && json["nameKana"].string == backUpName
+                editing = tmpArr.count == 1 && json["nameKana"] as NSString == backUpName
             }
         
             if(editing){
-                do{
-                    let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん0-9]*$", options: NSRegularExpressionOptions())
+                //do{//Swift2.0
+                //let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん0-9]*$", options: NSRegularExpressionOptions())//Swift2.0
+                let regex_yomigana = NSRegularExpression(pattern: "^[a-zA-Zあ-ん0-9]*$", options: NSRegularExpressionOptions(),error: nil)//Swift2.0
                     let nsSentence: NSString = nameKanaText.text!
-                    if let _ = regex_yomigana.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
+                    //if let _ = regex_yomigana.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))//Swift2.0
+                    if let _ = regex_yomigana!.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
                     {
                         //GlobalData.arrayの作り直し
-                        GlobalData.refreshList(backUpName,matchValid: false)
+                        GlobalData.refreshList(text: backUpName,matchValid: false)
                         
                         //セクションごとのarrayの作り直し
                         GlobalData.refreshAllList()
@@ -132,14 +139,14 @@ class ViewController6: UIViewController {
 //                        }
                     }
                     else{
-                        showAlert("エラー", mySentence: "読みがなはひらがなまたは英字で入力してください")
+                        showAlert(NSLocalizedString("error_title", comment: ""), mySentence: NSLocalizedString("error_sentence1", comment: ""))
                     }
                     
-                }catch{
-                }
+                //}catch{//Swift2.0
+                //}//Swift2.0
             }
             else{
-                showAlert("エラー", mySentence: "その名前はすでに使用されています")
+                showAlert(NSLocalizedString("error_title", comment: ""), mySentence: NSLocalizedString("error_sentence2", comment: ""))
             }
     }
     
@@ -150,12 +157,11 @@ class ViewController6: UIViewController {
             preferredStyle: UIAlertControllerStyle.Alert)
         
         //Default 複数指定可
-        let defaultAction:UIAlertAction = UIAlertAction(title: "OK",
+        let defaultAction:UIAlertAction = UIAlertAction(
+            title: "OK",
             style: UIAlertActionStyle.Default,
-            handler:{
-                (action:UIAlertAction) -> Void in
-                
-        })
+            handler:{(action:UIAlertAction!) -> Void in}
+        )
         
         //AlertもActionSheetも同じ
         alert.addAction(defaultAction)
@@ -167,27 +173,30 @@ class ViewController6: UIViewController {
     
     @IBAction func deleteAccount(sender: AnyObject) {
         //UIAlertView
-        let alert:UIAlertController = UIAlertController(title:"確認",
-            message: "本当に削除しますか？",
+        let alert:UIAlertController = UIAlertController(title:NSLocalizedString("confirm_title", comment: ""),
+            message: NSLocalizedString("confirm_sentence", comment: ""),
             preferredStyle: UIAlertControllerStyle.Alert)
         
         //Cancel 一つだけしか指定できない
-        let cancelAction:UIAlertAction = UIAlertAction(title: "No",
+        let cancelAction:UIAlertAction = UIAlertAction(
+            title: "No",
             style: UIAlertActionStyle.Cancel,
             handler:{
-                (action:UIAlertAction) -> Void in
-//                print("No")
-        })
+                (action:UIAlertAction!) -> Void in
+                //print("No")
+            }
+        )
         
         //Default 複数指定可
-        let defaultAction:UIAlertAction = UIAlertAction(title: "Yes",
+        let defaultAction:UIAlertAction = UIAlertAction(
+            title: "Yes",
             style: UIAlertActionStyle.Default,
             handler:{
-                (action:UIAlertAction) -> Void in
-//                print("Yes")
+                (action:UIAlertAction!) -> Void in
+                //print("Yes")
                 
                 //GlobalData.arrayの作り直し（name以外のもので作り直す（名前に重複がある場合全て消える））
-                GlobalData.refreshList(self.backUpName,matchValid: false)
+                GlobalData.refreshList(text: self.backUpName,matchValid: false)
                 
                 //セクションごとのarrayの作り直し
                 GlobalData.refreshAllList()
@@ -218,17 +227,25 @@ class ViewController6: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let array_ = GlobalData.getRefferenceList(selectedSectionNum)
-        var json:JSON = JSON(rawValue:array_[selectedItemNum])!
+        //var json:JSON = JSON(rawValue:array_[selectedItemNum])!
+        let json: Dictionary = array_[selectedItemNum] as NSDictionary
         
         //タイトル
-        titleString.title = json["name"].string!
+        //titleString.title = json["name"].string!
+        //nameText.text =     json["name"].string!
+        //backUpName =        json["nameKana"].string!
+        //nameKanaText.text = json["nameKana"].string!
+        //idText.text =       json["id"].string!
+        //passwordText.text = json["password"].string!
+        //mailText.text =     json["mail"].string!
         
-        nameText.text =     json["name"].string!
-        backUpName =        json["nameKana"].string!
-        nameKanaText.text = json["nameKana"].string!
-        idText.text =       json["id"].string!
-        passwordText.text = json["password"].string!
-        mailText.text =     json["mail"].string!
+        titleString.title = json["name"] as NSString
+        nameText.text =     json["name"] as NSString
+        backUpName =        json["nameKana"] as NSString
+        nameKanaText.text = json["nameKana"] as NSString
+        idText.text =       json["id"] as NSString
+        passwordText.text = json["password"] as NSString
+        mailText.text =     json["mail"] as NSString
         
         //バナー広告
         let displayWidth: CGFloat = self.view.frame.width

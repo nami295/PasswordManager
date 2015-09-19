@@ -1,0 +1,51 @@
+
+/* Class = "UINavigationItem"; title = "すべてのアカウント"; ObjectID = "3SM-Fy-fBu"; */
+"3SM-Fy-fBu.title" = "すべてのアカウント";
+
+/* Class = "UITextField"; placeholder = "ID"; ObjectID = "3eC-10-ct7"; */
+"3eC-10-ct7.placeholder" = "ID";
+
+/* Class = "UIButton"; normalTitle = "まとめて見る"; ObjectID = "5Fg-jw-pp9"; */
+"5Fg-jw-pp9.normalTitle" = "サマリ";
+
+/* Class = "UITextField"; placeholder = "名前"; ObjectID = "Ezn-c4-0Ce"; */
+"Ezn-c4-0Ce.placeholder" = "名前";
+
+/* Class = "UINavigationItem"; title = "abc"; ObjectID = "Ju4-P0-AJ9"; */
+"Ju4-P0-AJ9.title" = "abc";
+
+/* Class = "UITextField"; placeholder = "名前"; ObjectID = "MAF-GK-sqH"; */
+"MAF-GK-sqH.placeholder" = "名前";
+
+/* Class = "UITextField"; placeholder = "ID"; ObjectID = "PgW-vf-IpB"; */
+"PgW-vf-IpB.placeholder" = "ID";
+
+/* Class = "UITextField"; placeholder = "読みがな"; ObjectID = "QuD-el-e7F"; */
+"QuD-el-e7F.placeholder" = "読みがな";
+
+/* Class = "UITextField"; placeholder = "パスワード"; ObjectID = "ZDr-PU-DTT"; */
+"ZDr-PU-DTT.placeholder" = "パスワード";
+
+/* Class = "UIButton"; normalTitle = "登録"; ObjectID = "cB6-fy-bLL"; */
+"cB6-fy-bLL.normalTitle" = "登録";
+
+/* Class = "UIButton"; normalTitle = "変更"; ObjectID = "gOI-Kv-GQT"; */
+"gOI-Kv-GQT.normalTitle" = "変更";
+
+/* Class = "UIButton"; normalTitle = "削除"; ObjectID = "jyL-8h-4qa"; */
+"jyL-8h-4qa.normalTitle" = "削除";
+
+/* Class = "UITextField"; placeholder = "メールアドレス"; ObjectID = "lKA-fg-Ivc"; */
+"lKA-fg-Ivc.placeholder" = "メールアドレス";
+
+/* Class = "UITextField"; placeholder = "パスワード"; ObjectID = "m1P-GJ-bw7"; */
+"m1P-GJ-bw7.placeholder" = "パスワード";
+
+/* Class = "UITextField"; placeholder = "メールアドレス"; ObjectID = "mR3-Sv-iMe"; */
+"mR3-Sv-iMe.placeholder" = "メールアドレス";
+
+/* Class = "UINavigationItem"; title = "新規登録"; ObjectID = "ny6-9i-g9v"; */
+"ny6-9i-g9v.title" = "新規登録";
+
+/* Class = "UITextField"; placeholder = "読みがな"; ObjectID = "z2y-vR-lLF"; */
+"z2y-vR-lLF.placeholder" = "読みがな";

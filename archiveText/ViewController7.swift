@@ -34,27 +34,39 @@ class ViewController7: UIViewController {
             let arr = GlobalData.getRefferenceList(i)
             total += arr.count
         }
-        text += "合計：\(total)件\n\n"
+        text += NSLocalizedString("sum", comment: "") + "：\(total)" + NSLocalizedString("unit", comment: "") + "\n\n"
         
         var cnt = 0
         
         for(var i = 0;i<GlobalData.sections.count;i++){
             let arr = GlobalData.getRefferenceList(GlobalData.sections[i])
             if(arr.count != 0){
-                text += "【\(GlobalData.sections[cnt])】\(arr.count)件\n"
+                text += "【\(GlobalData.sections[cnt])】\(arr.count)" + NSLocalizedString("unit", comment: "") + "\n"
             }
             for(var j = 0;j<arr.count;j++){
-                var json:JSON = JSON(rawValue:arr[j])!
-                let name = json["name"].string!
-                let nameKana = json["nameKana"].string!
-                let id = json["id"].string!
-                let password = json["password"].string!
-                let mail = json["mail"].string!
-                text += "名前：\(name)\n"
-                text += "読みがな：\(nameKana)\n"
-                text += "ID：\(id)\n"
-                text += "パスワード：\(password)\n"
-                text += "メールアドレス：\(mail)\n\n"
+                //var json:JSON = JSON(rawValue:arr[j])!
+                //let name = json["name"].string!
+                //let nameKana = json["nameKana"].string!
+                //let id = json["id"].string!
+                //let password = json["password"].string!
+                //let mail = json["mail"].string!
+                let json:Dictionary = arr[j] as NSDictionary
+                let name = json["name"] as NSString
+                let nameKana = json["nameKana"] as NSString
+                let id = json["id"] as NSString
+                let password = json["password"] as NSString
+                let mail = json["mail"] as NSString
+//                text += "名前：\(name)\n"
+//                text += "読みがな：\(nameKana)\n"
+//                text += "ID：\(id)\n"
+//                text += "パスワード：\(password)\n"
+//                text += "メールアドレス：\(mail)\n\n"
+                
+                text += NSLocalizedString("name", comment: "") + "：\(name)\n"
+                text += NSLocalizedString("kana", comment: "") + "：\(nameKana)\n"
+                text += NSLocalizedString("Id", comment: "") + "：\(id)\n"
+                text += NSLocalizedString("password", comment: "") + "：\(password)\n"
+                text += NSLocalizedString("mailAddress", comment: "") + "：\(mail)\n\n"
             }
             cnt++
         }

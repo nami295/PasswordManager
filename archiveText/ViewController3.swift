@@ -36,7 +36,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
 //                print("データの追加に失敗しました。（ファイル存在チェック）");
 //            }
         }
-        GlobalData.array = NSKeyedUnarchiver.unarchiveObjectWithFile(GlobalData.filePath) as! NSArray
+        GlobalData.array = NSKeyedUnarchiver.unarchiveObjectWithFile(GlobalData.filePath) as NSArray
         
         GlobalData.refreshAllList()
         let displayWidth: CGFloat = self.view.frame.width
@@ -63,7 +63,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
         mySearchBar.showsCancelButton = true
         mySearchBar.showsBookmarkButton = false
         mySearchBar.searchBarStyle = UISearchBarStyle.Default
-        mySearchBar.placeholder = "検索"
+        mySearchBar.placeholder = NSLocalizedString("search", comment: "")
         mySearchBar.tintColor = UIColor.redColor()
         self.view.addSubview(mySearchBar)
         self.view.addSubview(bannerView_)
@@ -120,7 +120,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     // Segue 準備
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "toSubViewController") {
-            let subVC: ViewController6 = segue.destinationViewController as! ViewController6
+            let subVC: ViewController6 = segue.destinationViewController as ViewController6
             subVC.selectedSectionNum = selectedSectionNum
             subVC.selectedItemNum = selectedItemNum
         }
@@ -138,8 +138,10 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath) as UITableViewCell
-        var json:JSON = JSON(rawValue:GlobalData.getRefferenceList(indexPath.section)[indexPath.row])!
-        cell.textLabel?.text = json["name"].string
+        //var json:JSON = JSON(rawValue:GlobalData.getRefferenceList(indexPath.section)[indexPath.row])!
+        //cell.textLabel?.text = json["name"].string
+        
+        cell.textLabel?.text = GlobalData.getRefferenceList(indexPath.section)[indexPath.row]["name"] as NSString
         return cell
     }
     /*
@@ -151,7 +153,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
             refreshList(all:true)
         }
         else{
-            refreshList(text,perfectMatch:false)
+            refreshList(text: text,perfectMatch:false)
         }
     }
     
@@ -177,7 +179,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     func refreshList(text:String = "",all:Bool = false,perfectMatch: Bool = true){
         
         //GlobalData.arrayの作り直し
-        GlobalData.refreshList(text,all:all,perfectMatch:perfectMatch)
+        GlobalData.refreshList(text: text,all:all,perfectMatch:perfectMatch)
         
         //「セクションごとのarray」の作り直し
         GlobalData.refreshAllList()
@@ -185,7 +187,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
         //UITableViewの削除
         let views = self.view.subviews
         
-        for myView: UIView in views
+        for myView in views
         {
             if myView.isKindOfClass(UITableView) {
                 myView.removeFromSuperview()

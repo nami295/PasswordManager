@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  archiveText
+
+  Created by R.Kurachi on 2015/09/19.
+  Copyright (c) 2015年 R.Kurachi. All rights reserved.
+*/
+"name" = "Name";
+"kana" = "Name(Identifier)";
+"Id" = "ID";
+"password" = "Password";
+"mailAddress" = "Email Address";
+"search" = "Search";
+"error_title" = "Error";
+"error_sentence1" = "Name(Identifier) must consist of alphanumeric characters";
+"error_sentence2" = "Name(Identifier) was already registered";
+"sum" = "Total";
+"unit" = "";
+"confirm_title" = "Confirm";
+"confirm_sentence" = "May I delete that?";

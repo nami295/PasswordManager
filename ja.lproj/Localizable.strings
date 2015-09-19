@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  archiveText
+
+  Created by R.Kurachi on 2015/09/19.
+  Copyright (c) 2015年 R.Kurachi. All rights reserved.
+*/
+
+"name" = "名前";
+"kana" = "読みがな";
+"Id" = "ID";
+"password" = "パスワード";
+"mailAddress" = "メールアドレス";
+"search" = "検索";
+"error_title" = "エラー";
+"error_sentence1" = "読みがなはひらがなまたは英数字で入力してください";
+"error_sentence2" = "その名前はすでに使用されています";
+"sum" = "合計";
+"unit" = "件";
+"confirm_title" = "確認";
+"confirm_sentence" = "本当に削除しますか？";

@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.string.strings
+  archiveText
+
+  Created by R.Kurachi on 2015/09/19.
+  Copyright (c) 2015年 R.Kurachi. All rights reserved.
+*/
+CFBundleDisplayName = "パスワード";

@@ -45,14 +45,15 @@ class ViewController5: UIViewController {
     //名前
     @IBAction func editingChanged(sender: AnyObject) {
         let nsSentence: NSString = nameText.text!
-        do{
-            let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions())
-            if let _ = regex_yomigana.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
+        //do{//Swift2.0
+            //let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions())
+            let regex_yomigana = NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions(),error: nil)
+            if let _ = regex_yomigana!.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
             {
                 nameKanaText.text=nameText.text
             }
-        }catch{
-        }
+        //}catch{//Swift2.0
+        //}//Swift2.0
         controlRegisterButton()
     }
     
@@ -97,17 +98,14 @@ class ViewController5: UIViewController {
     }
     
     func dataSave(){
-        do{
-            let regex_yomigana =
-                try NSRegularExpression(
-                    pattern: "^[a-zA-Zあ-ん0-9]*$",
-                    options: NSRegularExpressionOptions()
-                )
-            
-            let tmpArr = GlobalData.getNewList(nameKanaText.text!)
+        //do{//Swift2.0
+            //let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん0-9]*$", options: NSRegularExpressionOptions())//Swift2.0
+            let regex_yomigana = NSRegularExpression(pattern: "^[a-zA-Zあ-ん0-9]*$", options: NSRegularExpressionOptions(),error: nil)
+        
+            let tmpArr = GlobalData.getNewList(text: nameKanaText.text!)
             if(tmpArr.count == 0){
                 let nsSentence: NSString = nameKanaText.text!
-                if let _ = regex_yomigana.firstMatchInString(
+                if let _ = regex_yomigana!.firstMatchInString(
                     nsSentence as String,
                     options: NSMatchingOptions(),
                     range: NSMakeRange(0, nsSentence.length)
@@ -154,14 +152,14 @@ class ViewController5: UIViewController {
 //                    }
                 }
                 else{
-                    showAlert("エラー", mySentence: "読みがなはひらがなまたは英数字で入力してください")
+                    showAlert(NSLocalizedString("error_title", comment: ""), mySentence: NSLocalizedString("error_sentence1", comment: ""))
                 }
             }
             else{
-                showAlert("エラー", mySentence: "その名前はすでに使用されています")
+                showAlert(NSLocalizedString("error_title", comment: ""), mySentence: NSLocalizedString("error_sentence2", comment: ""))
             }
-        }catch{
-        }
+        //}catch{//Swift2.0
+        //}//Swift2.0
     }
 
     func showAlert(myTitle:String,mySentence:String){
@@ -174,7 +172,7 @@ class ViewController5: UIViewController {
         let defaultAction:UIAlertAction = UIAlertAction(title: "OK",
             style: UIAlertActionStyle.Default,
             handler:{
-                (action:UIAlertAction) -> Void in
+                (action:UIAlertAction!) -> Void in
                 
         })
         

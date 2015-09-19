@@ -159,23 +159,23 @@ struct GlobalData{
     }
     
     static func getRefferenceList(num:Int) -> NSMutableArray{
-        let secPrefix: String = mySections[num] as! String
+        let secPrefix: String = mySections[num] as String
         return getRefferenceList(secPrefix)
     }
     
     
     static func getRefferenceList(str:NSString) -> NSMutableArray{
-        do{
-            let regex_hira1 = try NSRegularExpression(pattern: "[あ-おア-オ]", options: NSRegularExpressionOptions())
-            let regex_hira2 = try NSRegularExpression(pattern: "[か-こカ-コ]", options: NSRegularExpressionOptions())
-            let regex_hira3 = try NSRegularExpression(pattern: "[さ-そサ-ソ]", options: NSRegularExpressionOptions())
-            let regex_hira4 = try NSRegularExpression(pattern: "[た-とタ-ト]", options: NSRegularExpressionOptions())
-            let regex_hira5 = try NSRegularExpression(pattern: "[な-のナ-ノ]", options: NSRegularExpressionOptions())
-            let regex_hira6 = try NSRegularExpression(pattern: "[は-ほハ-ホ]", options: NSRegularExpressionOptions())
-            let regex_hira7 = try NSRegularExpression(pattern: "[ま-もマ-モ]", options: NSRegularExpressionOptions())
-            let regex_hira8 = try NSRegularExpression(pattern: "[や-よヤ-ヨ]", options: NSRegularExpressionOptions())
-            let regex_hira9 = try NSRegularExpression(pattern: "[ら-ろラ-ロ]", options: NSRegularExpressionOptions())
-            let regex_hira10 = try NSRegularExpression(pattern: "[わ-んワ-ン]", options: NSRegularExpressionOptions())
+//        do{
+            let regex_hira1 = NSRegularExpression(pattern: "[あ-おア-オ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira2 = NSRegularExpression(pattern: "[か-こカ-コ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira3 = NSRegularExpression(pattern: "[さ-そサ-ソ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira4 = NSRegularExpression(pattern: "[た-とタ-ト]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira5 = NSRegularExpression(pattern: "[な-のナ-ノ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira6 = NSRegularExpression(pattern: "[は-ほハ-ホ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira7 = NSRegularExpression(pattern: "[ま-もマ-モ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira8 = NSRegularExpression(pattern: "[や-よヤ-ヨ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira9 = NSRegularExpression(pattern: "[ら-ろラ-ロ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira10 = NSRegularExpression(pattern: "[わ-んワ-ン]", options: NSRegularExpressionOptions(),error: nil)
             if(str == "a"){
                 return item_a
             }
@@ -332,91 +332,91 @@ struct GlobalData{
             else if(str == "Z"){
                 return item_z
             }
-            else if let _ = regex_hira1.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira1!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 return item_あ
             }
-            else if let _ = regex_hira2.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira2!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 return item_か
             }
-            else if let _ = regex_hira3.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira3!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 return item_さ
             }
-            else if let _ = regex_hira4.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira4!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 return item_た
             }
-            else if let _ = regex_hira5.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira5!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 return item_な
             }
-            else if let _ = regex_hira6.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira6!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 return item_は
             }
-            else if let _ = regex_hira7.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira7!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 return item_ま
             }
-            else if let _ = regex_hira8.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira8!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 return item_や
             }
-            else if let _ = regex_hira9.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira9!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 return item_ら
             }
-            else if let _ = regex_hira10.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira10!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 return item_わ
             }
             else{
                 return item_other
             }
-        }catch{
-        }
-        return item_other
+//        }catch{
+//        }
+//        return item_other
     }
     
     
     static func addSection(str:NSString){
         var sec = ""
         
-        do{
-            let regex_azAZ = try NSRegularExpression(pattern: "[a-zA-Z]", options: NSRegularExpressionOptions())
-            let regex_hira1 = try NSRegularExpression(pattern: "[あ-おア-オ]", options: NSRegularExpressionOptions())
-            let regex_hira2 = try NSRegularExpression(pattern: "[か-こカ-コ]", options: NSRegularExpressionOptions())
-            let regex_hira3 = try NSRegularExpression(pattern: "[さ-そサ-ソ]", options: NSRegularExpressionOptions())
-            let regex_hira4 = try NSRegularExpression(pattern: "[た-とタ-ト]", options: NSRegularExpressionOptions())
-            let regex_hira5 = try NSRegularExpression(pattern: "[な-のナ-ノ]", options: NSRegularExpressionOptions())
-            let regex_hira6 = try NSRegularExpression(pattern: "[は-ほハ-ホ]", options: NSRegularExpressionOptions())
-            let regex_hira7 = try NSRegularExpression(pattern: "[ま-もマ-モ]", options: NSRegularExpressionOptions())
-            let regex_hira8 = try NSRegularExpression(pattern: "[や-よヤ-ヨ]", options: NSRegularExpressionOptions())
-            let regex_hira9 = try NSRegularExpression(pattern: "[ら-ろラ-ロ]", options: NSRegularExpressionOptions())
-            let regex_hira10 = try NSRegularExpression(pattern: "[わ-んワ-ン]", options: NSRegularExpressionOptions())
-            if let _ = regex_azAZ.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+//        do{
+            let regex_azAZ = NSRegularExpression(pattern: "[a-zA-Z]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira1 = NSRegularExpression(pattern: "[あ-おア-オ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira2 = NSRegularExpression(pattern: "[か-こカ-コ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira3 = NSRegularExpression(pattern: "[さ-そサ-ソ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira4 = NSRegularExpression(pattern: "[た-とタ-ト]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira5 = NSRegularExpression(pattern: "[な-のナ-ノ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira6 = NSRegularExpression(pattern: "[は-ほハ-ホ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira7 = NSRegularExpression(pattern: "[ま-もマ-モ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira8 = NSRegularExpression(pattern: "[や-よヤ-ヨ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira9 = NSRegularExpression(pattern: "[ら-ろラ-ロ]", options: NSRegularExpressionOptions(),error: nil)
+            let regex_hira10 = NSRegularExpression(pattern: "[わ-んワ-ン]", options: NSRegularExpressionOptions(),error: nil)
+            if let _ = regex_azAZ!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 sec = str.lowercaseString
             }
-            else if let _ = regex_hira1.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira1!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
             sec = "あ"
             }
-            else if let _ = regex_hira2.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira2!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 sec = "か"
             }
-            else if let _ = regex_hira3.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira3!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 sec = "さ"
             }
-            else if let _ = regex_hira4.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira4!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 sec = "た"
             }
-            else if let _ = regex_hira5.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira5!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 sec = "な"
             }
-            else if let _ = regex_hira6.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira6!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 sec = "は"
             }
-            else if let _ = regex_hira7.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira7!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 sec = "ま"
             }
-            else if let _ = regex_hira8.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira8!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 sec = "や"
             }
-            else if let _ = regex_hira9.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira9!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 sec = "ら"
             }
-            else if let _ = regex_hira10.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
+            else if let _ = regex_hira10!.firstMatchInString(str as String, options: NSMatchingOptions(), range: NSMakeRange(0, str.length)){
                 sec = "わ"
             }
             else{
@@ -425,7 +425,7 @@ struct GlobalData{
             if(sec != ""){
                 var flg = true
                 for elem in mySections{
-                    if(elem as! String == sec){
+                    if(elem as String == sec){
                         flg = false
                         break
                     }
@@ -434,14 +434,14 @@ struct GlobalData{
                     mySections.addObject(sec)
                 }
             }
-        }catch{
-        }
+//        }catch{
+//        }
     }
     
     ///正規表現にマッチする要素でGlobalData.arrayを作り直す
     static func refreshList(text :String = "",matchValid: Bool = true,all:Bool = false,perfectMatch: Bool = true){
         
-        GlobalData.array = getNewList(text, matchValid:matchValid,all:all,perfectMatch:perfectMatch)
+        GlobalData.array = getNewList(text: text, matchValid:matchValid,all:all,perfectMatch:perfectMatch)
     }
     
     //正規表現にマッチする要素でarrayを取得する
@@ -463,11 +463,11 @@ struct GlobalData{
         
         
         var regex: NSRegularExpression?
-        do {
-            regex = try NSRegularExpression(pattern: regexStr, options: NSRegularExpressionOptions())
-        } catch _ {
-            regex = nil
-        }
+        //do {
+        regex = NSRegularExpression(pattern: regexStr, options: NSRegularExpressionOptions(),error: nil)
+        //} catch _ {
+            //regex = nil
+        //}
         
         //
         //正規表現に合ったものを抽出する
@@ -475,15 +475,19 @@ struct GlobalData{
         
         let newList: NSMutableArray = []
         //ファイルからデータを読み込む
-        let array = NSKeyedUnarchiver.unarchiveObjectWithFile(GlobalData.filePath) as! NSArray
+        let array = NSKeyedUnarchiver.unarchiveObjectWithFile(GlobalData.filePath) as NSArray
         
         
         for elem in array{
             
-            var json:JSON = JSON(rawValue:elem)!
-            let str = json["nameKana"].string
+            //var json:JSON = JSON(rawValue:elem)!
+            let json: Dictionary = elem as NSDictionary
             
-            let nsSentence: NSString = str!
+            //let str = json["nameKana"].string
+            let str = json["nameKana"] as NSString
+            
+            //let nsSentence: NSString = str!
+            let nsSentence: NSString = str
             
             //正規表現に一致した場合
             if let _ = regex?.firstMatchInString(
@@ -515,10 +519,15 @@ struct GlobalData{
         
         
         for elem in GlobalData.array{
-            var json:JSON = JSON(rawValue:elem)!
-            var str = json["nameKana"].string
-            GlobalData.getRefferenceList(str!.substringToIndex(advance(str!.startIndex, 1))).addObject(elem)
-            GlobalData.addSection(str!.substringToIndex(advance(str!.startIndex, 1)))
+            //var json:JSON = JSON(rawValue:elem)!
+            //var str = json["nameKana"].string
+            var str = elem["nameKana"] as String
+            
+            //GlobalData.getRefferenceList(str!.substringToIndex(advance(str!.startIndex, 1))).addObject(elem)
+            //GlobalData.addSection(str!.substringToIndex(advance(str!.startIndex, 1)))
+            
+            GlobalData.getRefferenceList(str.substringToIndex(advance(str.startIndex, 1))).addObject(elem)
+            GlobalData.addSection(str.substringToIndex(advance(str.startIndex, 1)))
         }
         
         //----------------
@@ -528,14 +537,11 @@ struct GlobalData{
         //並び替え用の配列
         var arr = [String]()
         for elem in GlobalData.mySections{
-            arr.append(elem as! String)
+            arr.append(elem as String)
         }
         //配列のソート
-//        print("////////////")
-//        print(arr)
-        arr.sortInPlace {$0 < $1}
-//        print(arr)
-//        print("////////////")
+//     rtInPlace {$0 < $1}
+        arr.sort {$0 < $1}
         
         //セクションのリストを空に
         GlobalData.mySections.removeAllObjects()
@@ -543,6 +549,27 @@ struct GlobalData{
         for elem in arr{
             GlobalData.mySections.addObject(elem)
         }
+        
+        //並び替え用の配列
+//        var arr = [String]()
+//        for elem in GlobalData.mySections{
+//            arr.append(elem as! String)
+//        }
+//        //配列のソート
+//        var rows = arr.reverse().map{(object: $0)}
+//        rows.sort({$0.object < $1.object})
+////        arr.sortInPlace {$0 < $1}
+//        
+//        //セクションのリストを空に
+//        GlobalData.mySections.removeAllObjects()
+//        
+////        for elem in arr{
+////            GlobalData.mySections.addObject(elem)
+////        }
+//        var arr_ = rows.map{$0.object}
+//        for elem in arr_{
+//            GlobalData.mySections.addObject(elem)
+//        }
         
     }
 }
