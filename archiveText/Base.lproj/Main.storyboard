@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iNe-xC-MHP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iNe-xC-MHP">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="HelveticaNeue.ttc">
@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name(Identifier)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z2y-vR-lLF">
-                                <rect key="frame" x="241" y="175" width="119" height="30"/>
+                                <rect key="frame" x="241" y="200" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
@@ -30,16 +30,8 @@
                                     <action selector="nameKanaDidEndOnExit:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="UYc-DW-qSA"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="idText" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PgW-vf-IpB">
-                                <rect key="frame" x="241" y="215" width="119" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                <connections>
-                                    <action selector="idDidEndOnExit:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="N1M-8g-3N2"/>
-                                </connections>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="passwordText" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZDr-PU-DTT">
-                                <rect key="frame" x="241" y="255" width="119" height="30"/>
+                                <rect key="frame" x="241" y="270" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
@@ -47,7 +39,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="nameText" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MAF-GK-sqH">
-                                <rect key="frame" x="241" y="135" width="119" height="30"/>
+                                <rect key="frame" x="241" y="165" width="119" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
@@ -56,26 +48,34 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="mailText" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lKA-fg-Ivc">
-                                <rect key="frame" x="241" y="295" width="119" height="30"/>
+                                <rect key="frame" x="241" y="305" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 <connections>
                                     <action selector="mailDidEndOnExit:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="WQk-RV-u70"/>
                                 </connections>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="idText" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PgW-vf-IpB">
+                                <rect key="frame" x="241" y="235" width="119" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <connections>
+                                    <action selector="idDidEndOnExit:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="N1M-8g-3N2"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lKA-fg-Ivc" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="10" id="4IQ-Hc-dpK"/>
+                            <constraint firstItem="lKA-fg-Ivc" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="20" id="4IQ-Hc-dpK"/>
                             <constraint firstItem="PgW-vf-IpB" firstAttribute="leading" secondItem="MAF-GK-sqH" secondAttribute="leading" id="8i7-C4-GMf"/>
                             <constraint firstItem="lKA-fg-Ivc" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="CG3-IH-Icw"/>
                             <constraint firstItem="ZDr-PU-DTT" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="CXj-hm-a3E"/>
-                            <constraint firstItem="MAF-GK-sqH" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="-150" id="DTK-YD-Xho"/>
-                            <constraint firstItem="z2y-vR-lLF" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="-110" id="Xd5-Rv-YxT"/>
+                            <constraint firstItem="MAF-GK-sqH" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="-120" id="DTK-YD-Xho"/>
+                            <constraint firstItem="z2y-vR-lLF" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="-85" id="Xd5-Rv-YxT"/>
                             <constraint firstItem="ZDr-PU-DTT" firstAttribute="leading" secondItem="MAF-GK-sqH" secondAttribute="leading" id="YBz-6r-Vii"/>
                             <constraint firstItem="z2y-vR-lLF" firstAttribute="leading" secondItem="MAF-GK-sqH" secondAttribute="leading" id="Zjx-MR-IKO"/>
-                            <constraint firstItem="ZDr-PU-DTT" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="-30" id="e0L-wL-K6q"/>
-                            <constraint firstItem="PgW-vf-IpB" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="-70" id="fhL-f1-OXp"/>
+                            <constraint firstItem="ZDr-PU-DTT" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="-15" id="e0L-wL-K6q"/>
+                            <constraint firstItem="PgW-vf-IpB" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="-50" id="fhL-f1-OXp"/>
                             <constraint firstItem="z2y-vR-lLF" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="jbD-uy-mbF"/>
                             <constraint firstItem="lKA-fg-Ivc" firstAttribute="leading" secondItem="MAF-GK-sqH" secondAttribute="leading" id="oDG-Rf-e2Z"/>
                             <constraint firstItem="MAF-GK-sqH" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="p6X-Fj-yZ0"/>
@@ -85,7 +85,7 @@
                     <navigationItem key="navigationItem" title="New Account" id="ny6-9i-g9v">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="y6u-sL-Coi">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cB6-fy-bLL">
-                                <rect key="frame" x="554" y="7" width="65" height="30"/>
+                                <rect key="frame" x="515" y="7" width="65" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Done">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -123,7 +123,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ezn-c4-0Ce">
-                                <rect key="frame" x="241" y="135" width="119" height="30"/>
+                                <rect key="frame" x="241" y="165" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
@@ -132,7 +132,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3eC-10-ct7">
-                                <rect key="frame" x="241" y="215" width="119" height="30"/>
+                                <rect key="frame" x="241" y="235" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
@@ -140,7 +140,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="m1P-GJ-bw7">
-                                <rect key="frame" x="241" y="255" width="119" height="30"/>
+                                <rect key="frame" x="241" y="270" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
@@ -148,7 +148,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mR3-Sv-iMe">
-                                <rect key="frame" x="241" y="295" width="119" height="30"/>
+                                <rect key="frame" x="241" y="305" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 <connections>
@@ -156,7 +156,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name(Identifier)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QuD-el-e7F">
-                                <rect key="frame" x="241" y="175" width="119" height="30"/>
+                                <rect key="frame" x="241" y="200" width="119" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
@@ -165,7 +165,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyL-8h-4qa">
-                                <rect key="frame" x="241" y="335" width="118" height="30"/>
+                                <rect key="frame" x="241" y="340" width="118" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Delete">
                                     <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -180,19 +180,19 @@
                         <color key="backgroundColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
                         <constraints>
                             <constraint firstItem="3eC-10-ct7" firstAttribute="centerX" secondItem="i0g-5C-S4q" secondAttribute="centerX" id="0rk-wJ-wOp"/>
-                            <constraint firstItem="mR3-Sv-iMe" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="10" id="1l1-vQ-RVI"/>
+                            <constraint firstItem="mR3-Sv-iMe" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="20" id="1l1-vQ-RVI"/>
                             <constraint firstItem="3eC-10-ct7" firstAttribute="leading" secondItem="Ezn-c4-0Ce" secondAttribute="leading" id="2K3-wP-7OX"/>
                             <constraint firstItem="QuD-el-e7F" firstAttribute="centerX" secondItem="i0g-5C-S4q" secondAttribute="centerX" id="9ME-rm-gaF"/>
-                            <constraint firstItem="jyL-8h-4qa" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="50" id="Atm-4D-l08"/>
-                            <constraint firstItem="3eC-10-ct7" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="-70" id="En3-CF-9K7"/>
+                            <constraint firstItem="jyL-8h-4qa" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="55" id="Atm-4D-l08"/>
+                            <constraint firstItem="3eC-10-ct7" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="-50" id="En3-CF-9K7"/>
                             <constraint firstItem="jyL-8h-4qa" firstAttribute="centerX" secondItem="i0g-5C-S4q" secondAttribute="centerX" id="FV8-6U-x2U"/>
-                            <constraint firstItem="Ezn-c4-0Ce" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="-150" id="Fw3-fG-cPg"/>
+                            <constraint firstItem="Ezn-c4-0Ce" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="-120" id="Fw3-fG-cPg"/>
                             <constraint firstItem="Ezn-c4-0Ce" firstAttribute="centerX" secondItem="i0g-5C-S4q" secondAttribute="centerX" id="IRC-sm-JrX"/>
-                            <constraint firstItem="m1P-GJ-bw7" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="-30" id="IRp-xR-QWw"/>
+                            <constraint firstItem="m1P-GJ-bw7" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="-15" id="IRp-xR-QWw"/>
                             <constraint firstItem="jyL-8h-4qa" firstAttribute="leading" secondItem="Ezn-c4-0Ce" secondAttribute="leading" id="M0D-39-FYL"/>
                             <constraint firstItem="QuD-el-e7F" firstAttribute="leading" secondItem="Ezn-c4-0Ce" secondAttribute="leading" id="MrQ-dR-tma"/>
                             <constraint firstItem="mR3-Sv-iMe" firstAttribute="centerX" secondItem="i0g-5C-S4q" secondAttribute="centerX" id="PyE-kj-eqf"/>
-                            <constraint firstItem="QuD-el-e7F" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="-110" id="QLL-xM-t1u"/>
+                            <constraint firstItem="QuD-el-e7F" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="-85" id="QLL-xM-t1u"/>
                             <constraint firstItem="m1P-GJ-bw7" firstAttribute="leading" secondItem="Ezn-c4-0Ce" secondAttribute="leading" id="iQJ-Qm-hMK"/>
                             <constraint firstItem="m1P-GJ-bw7" firstAttribute="centerX" secondItem="i0g-5C-S4q" secondAttribute="centerX" id="nMQ-BY-Zum"/>
                             <constraint firstItem="mR3-Sv-iMe" firstAttribute="leading" secondItem="Ezn-c4-0Ce" secondAttribute="leading" id="ram-bX-I0l"/>
@@ -261,7 +261,7 @@
                     <navigationItem key="navigationItem" title="All Accounts" id="3SM-Fy-fBu">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="Uze-St-XMo">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Fg-jw-pp9">
-                                <rect key="frame" x="16" y="7" width="70" height="30"/>
+                                <rect key="frame" x="20" y="7" width="70" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Summary"/>

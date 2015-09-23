@@ -17,4 +17,4 @@
 "sum" = "Total";
 "unit" = "";
 "confirm_title" = "Confirm";
-"confirm_sentence" = "May I delete that?";
+"confirm_sentence" = "Are you sure you want to delete?";

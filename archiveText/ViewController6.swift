@@ -49,18 +49,17 @@ class ViewController6: UIViewController {
     
     //名前
     @IBAction func editingChanged(sender: AnyObject) {
-//        do{//Swift2.0
-        //            let regex_yomigana =  try NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions())//Swift2.0
-        let regex_yomigana =  NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions(), error: nil)
+        do{
+        let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions())
             let nsSentence: NSString = nameText.text!
-//            if let _ = regex_yomigana.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))//Swift2.0
-            if let _ = regex_yomigana!.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
+
+            if let _ = regex_yomigana.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
             {
                 nameKanaText.text=nameText.text
             }
             controlRegisterButton()
-//        }catch{//Swift2.0
-//        }//Swift2.0
+        }catch{
+        }
     }
     
     //読みがな
@@ -80,26 +79,25 @@ class ViewController6: UIViewController {
     @IBAction func change(sender: AnyObject) {
         
         
-        let tmpArr = GlobalData.getNewList(text: nameKanaText.text!)
+        let tmpArr = GlobalData.getNewList(nameKanaText.text!)
             var editing = tmpArr.count == 0
             if(!editing){
                 //var json:JSON = JSON(rawValue:tmpArr[0])!
-                let json: Dictionary = tmpArr[0] as NSDictionary
+                //let json: Dictionary = tmpArr[0] as NSDictionary
+                let json = tmpArr[0] as! NSDictionary
                 
                 //editing = tmpArr.count == 1 && json["nameKana"].string == backUpName
-                editing = tmpArr.count == 1 && json["nameKana"] as NSString == backUpName
+                editing = tmpArr.count == 1 && json["nameKana"] as? NSString == backUpName
             }
         
             if(editing){
-                //do{//Swift2.0
-                //let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん0-9]*$", options: NSRegularExpressionOptions())//Swift2.0
-                let regex_yomigana = NSRegularExpression(pattern: "^[a-zA-Zあ-ん0-9]*$", options: NSRegularExpressionOptions(),error: nil)//Swift2.0
+                do{
+                let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん0-9]*$", options: NSRegularExpressionOptions())
                     let nsSentence: NSString = nameKanaText.text!
-                    //if let _ = regex_yomigana.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))//Swift2.0
-                    if let _ = regex_yomigana!.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
+                    if let _ = regex_yomigana.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
                     {
                         //GlobalData.arrayの作り直し
-                        GlobalData.refreshList(text: backUpName,matchValid: false)
+                        GlobalData.refreshList(backUpName,matchValid: false)
                         
                         //セクションごとのarrayの作り直し
                         GlobalData.refreshAllList()
@@ -119,14 +117,7 @@ class ViewController6: UIViewController {
                             "mail":mail!
                             ] as NSDictionary
                         
-                        
-                        GlobalData.getRefferenceList(
-                            nameText.text!.substringToIndex(
-                                advance(
-                                    nameText.text!.startIndex, 1
-                                )
-                            )
-                            ).addObject(add)
+                        GlobalData.getRefferenceList((nameText.text! as NSString).substringToIndex(1)).addObject(add)
                         
                         NSKeyedArchiver.archiveRootObject(GlobalData.getAllArray(), toFile:GlobalData.filePath);
                         
@@ -142,8 +133,8 @@ class ViewController6: UIViewController {
                         showAlert(NSLocalizedString("error_title", comment: ""), mySentence: NSLocalizedString("error_sentence1", comment: ""))
                     }
                     
-                //}catch{//Swift2.0
-                //}//Swift2.0
+                }catch{
+                }
             }
             else{
                 showAlert(NSLocalizedString("error_title", comment: ""), mySentence: NSLocalizedString("error_sentence2", comment: ""))
@@ -196,7 +187,7 @@ class ViewController6: UIViewController {
                 //print("Yes")
                 
                 //GlobalData.arrayの作り直し（name以外のもので作り直す（名前に重複がある場合全て消える））
-                GlobalData.refreshList(text: self.backUpName,matchValid: false)
+                GlobalData.refreshList(self.backUpName,matchValid: false)
                 
                 //セクションごとのarrayの作り直し
                 GlobalData.refreshAllList()
@@ -228,7 +219,8 @@ class ViewController6: UIViewController {
         super.viewDidLoad()
         let array_ = GlobalData.getRefferenceList(selectedSectionNum)
         //var json:JSON = JSON(rawValue:array_[selectedItemNum])!
-        let json: Dictionary = array_[selectedItemNum] as NSDictionary
+        //let json: Dictionary = array_[selectedItemNum] as NSDictionary
+        let json = array_[selectedItemNum] as! NSDictionary
         
         //タイトル
         //titleString.title = json["name"].string!
@@ -239,13 +231,13 @@ class ViewController6: UIViewController {
         //passwordText.text = json["password"].string!
         //mailText.text =     json["mail"].string!
         
-        titleString.title = json["name"] as NSString
-        nameText.text =     json["name"] as NSString
-        backUpName =        json["nameKana"] as NSString
-        nameKanaText.text = json["nameKana"] as NSString
-        idText.text =       json["id"] as NSString
-        passwordText.text = json["password"] as NSString
-        mailText.text =     json["mail"] as NSString
+        titleString.title = json["name"] as! NSString as String
+        nameText.text =     json["name"] as! NSString as String
+        backUpName =        json["nameKana"] as! NSString as String
+        nameKanaText.text = json["nameKana"] as! NSString as String
+        idText.text =       json["id"] as! NSString as String
+        passwordText.text = json["password"] as! NSString as String
+        mailText.text =     json["mail"] as! NSString as String
         
         //バナー広告
         let displayWidth: CGFloat = self.view.frame.width
@@ -254,10 +246,10 @@ class ViewController6: UIViewController {
         bannerView_.rootViewController = self;
         let request: GADRequest = GADRequest();
         bannerView_.loadRequest(request);
-        bannerView_.frame = CGRectMake(0, 0, displayWidth, 50)
+        bannerView_.frame = CGRectMake(0, 0, displayWidth, 40)
         bannerView_.layer.position = CGPoint(
             x: self.view.bounds.width/2,
-            y: 90)
+            y: 80)
         self.view.addSubview(bannerView_)
         
         controlRegisterButton()

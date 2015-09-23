@@ -45,15 +45,14 @@ class ViewController5: UIViewController {
     //名前
     @IBAction func editingChanged(sender: AnyObject) {
         let nsSentence: NSString = nameText.text!
-        //do{//Swift2.0
-            //let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions())
-            let regex_yomigana = NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions(),error: nil)
-            if let _ = regex_yomigana!.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
+        do{
+            let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん]*$", options: NSRegularExpressionOptions())
+            if let _ = regex_yomigana.firstMatchInString(nsSentence as String, options: NSMatchingOptions(), range: NSMakeRange(0, nsSentence.length))
             {
                 nameKanaText.text=nameText.text
             }
-        //}catch{//Swift2.0
-        //}//Swift2.0
+        }catch{
+        }
         controlRegisterButton()
     }
     
@@ -79,10 +78,10 @@ class ViewController5: UIViewController {
         bannerView_.rootViewController = self;
         let request: GADRequest = GADRequest();
         bannerView_.loadRequest(request);
-        bannerView_.frame = CGRectMake(0, 0, displayWidth, 50)
+        bannerView_.frame = CGRectMake(0, 0, displayWidth, 40)
         bannerView_.layer.position = CGPoint(
             x: self.view.bounds.width/2,
-            y: 90)
+            y: 80)
         self.view.addSubview(bannerView_)
         
         controlRegisterButton()
@@ -98,14 +97,13 @@ class ViewController5: UIViewController {
     }
     
     func dataSave(){
-        //do{//Swift2.0
-            //let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん0-9]*$", options: NSRegularExpressionOptions())//Swift2.0
-            let regex_yomigana = NSRegularExpression(pattern: "^[a-zA-Zあ-ん0-9]*$", options: NSRegularExpressionOptions(),error: nil)
+        do{
+            let regex_yomigana = try NSRegularExpression(pattern: "^[a-zA-Zあ-ん0-9]*$", options: NSRegularExpressionOptions())
         
-            let tmpArr = GlobalData.getNewList(text: nameKanaText.text!)
+            let tmpArr = GlobalData.getNewList(nameKanaText.text!)
             if(tmpArr.count == 0){
                 let nsSentence: NSString = nameKanaText.text!
-                if let _ = regex_yomigana!.firstMatchInString(
+                if let _ = regex_yomigana.firstMatchInString(
                     nsSentence as String,
                     options: NSMatchingOptions(),
                     range: NSMakeRange(0, nsSentence.length)
@@ -132,11 +130,9 @@ class ViewController5: UIViewController {
                     //セクションごとのarrayの作り直し
                     GlobalData.refreshAllList()
                     
-                    GlobalData.getRefferenceList(
-                        nameText.text!.substringToIndex(
-                            advance(nameText.text!.startIndex, 1)
-                        )
-                    ).addObject(add)
+                    let str = nameText.text!
+                    GlobalData.getRefferenceList((str as NSString).substringToIndex(1)).addObject(add)
+//                        (str as NSString).substringToIndex(1)
                         
                     NSKeyedArchiver.archiveRootObject(GlobalData.getAllArray(), toFile:GlobalData.filePath);
                         
@@ -158,8 +154,8 @@ class ViewController5: UIViewController {
             else{
                 showAlert(NSLocalizedString("error_title", comment: ""), mySentence: NSLocalizedString("error_sentence2", comment: ""))
             }
-        //}catch{//Swift2.0
-        //}//Swift2.0
+        }catch{
+        }
     }
 
     func showAlert(myTitle:String,mySentence:String){

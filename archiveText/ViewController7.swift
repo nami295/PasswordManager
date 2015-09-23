@@ -15,18 +15,6 @@ class ViewController7: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //バナー広告
-        let displayWidth: CGFloat = self.view.frame.width
-        bannerView_ = GADBannerView()
-        bannerView_.adUnitID = "ca-app-pub-5418872710464793/7820166668";
-        bannerView_.rootViewController = self;
-        let request: GADRequest = GADRequest();
-        bannerView_.loadRequest(request);
-        bannerView_.frame = CGRectMake(0, 0, displayWidth, 50)
-        bannerView_.layer.position = CGPoint(
-            x: self.view.bounds.width/2,
-            y: 90)
 
         var text = "";
         var total = 0;
@@ -50,12 +38,13 @@ class ViewController7: UIViewController {
                 //let id = json["id"].string!
                 //let password = json["password"].string!
                 //let mail = json["mail"].string!
-                let json:Dictionary = arr[j] as NSDictionary
-                let name = json["name"] as NSString
-                let nameKana = json["nameKana"] as NSString
-                let id = json["id"] as NSString
-                let password = json["password"] as NSString
-                let mail = json["mail"] as NSString
+                //let json:Dictionary = arr[j] as NSDictionary
+                let json = arr[j] as! NSDictionary
+                let name = json["name"] as! NSString
+                let nameKana = json["nameKana"] as! NSString
+                let id = json["id"] as! NSString
+                let password = json["password"] as! NSString
+                let mail = json["mail"] as! NSString
 //                text += "名前：\(name)\n"
 //                text += "読みがな：\(nameKana)\n"
 //                text += "ID：\(id)\n"
@@ -70,17 +59,31 @@ class ViewController7: UIViewController {
             }
             cnt++
         }
+        let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
-        let myTextView = UITextView()
-        myTextView.frame = CGRectMake(
-            0,
-            bannerView_.frame.height,
-            displayWidth,
-            (displayHeight - bannerView_.frame.height))
-        myTextView.text = text
         
-        self.view.addSubview(myTextView)
+        //バナー広告
+        bannerView_ = GADBannerView()
+        bannerView_.adUnitID = "ca-app-pub-5418872710464793/7820166668";
+        bannerView_.rootViewController = self;
+        let request: GADRequest = GADRequest();
+        bannerView_.loadRequest(request);
+        bannerView_.frame = CGRectMake(0, 0, displayWidth, 50)
+        bannerView_.layer.position = CGPoint(x: self.view.bounds.width/2,y: 90)
         self.view.addSubview(bannerView_)
+        
+        //テキストビュー
+        let padding = 65 + bannerView_.frame.height
+        let myTextView = UITextView(
+            frame : CGRect(
+                x: 0,
+                y: padding,
+                width: displayWidth,
+                height: displayHeight - padding
+            )
+        )
+        myTextView.text = text
+        self.view.addSubview(myTextView)
     }
 
     override func didReceiveMemoryWarning() {

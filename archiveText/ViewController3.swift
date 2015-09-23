@@ -20,8 +20,16 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
         
 //        print(GoogleMobileAds.GADRequest.sdkVersion);
         super.viewDidLoad()
-        GlobalData.dir = NSHomeDirectory().stringByAppendingPathComponent("Documents");
-        GlobalData.filePath = GlobalData.dir.stringByAppendingPathComponent("data.dat");
+        
+        
+        //GlobalData.dir = NSHomeDirectory().stringByAppendingPathComponent("Documents");
+        //GlobalData.filePath = GlobalData.dir.stringByAppendingPathComponent("data.dat");
+        let dir = NSURL(fileURLWithPath: NSHomeDirectory()).URLByAppendingPathComponent("Documents").path!
+        let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent("data.dat").path!
+        GlobalData.dir = dir
+        GlobalData.filePath = path
+        
+        
         
         let fm = NSFileManager.defaultManager()
         if(!fm.fileExistsAtPath(GlobalData.filePath)){
@@ -36,7 +44,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
 //                print("データの追加に失敗しました。（ファイル存在チェック）");
 //            }
         }
-        GlobalData.array = NSKeyedUnarchiver.unarchiveObjectWithFile(GlobalData.filePath) as NSArray
+        GlobalData.array = NSKeyedUnarchiver.unarchiveObjectWithFile(GlobalData.filePath) as! NSArray
         
         GlobalData.refreshAllList()
         let displayWidth: CGFloat = self.view.frame.width
@@ -55,7 +63,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
         //検索バー
         mySearchBar = UISearchBar()
         mySearchBar.delegate = self
-        mySearchBar.frame = CGRectMake(0, 0, displayWidth, 116)
+        mySearchBar.frame = CGRectMake(0, 0, displayWidth, 50)
         mySearchBar.layer.position = CGPoint(
             x: self.view.bounds.width/2,
             y: (90 + bannerView_.frame.height)
@@ -75,12 +83,13 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     func createTableView(){
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
+        let padding = 65 + bannerView_.frame.height + mySearchBar.frame.height
         let myTableView: UITableView = UITableView(
             frame: CGRect(
                 x: 0,
-                y: bannerView_.frame.height + mySearchBar.frame.height,
+                y: padding,
                 width: displayWidth,
-                height: displayHeight - (bannerView_.frame.height + mySearchBar.frame.height)
+                height: displayHeight - padding
             )
         )
         myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
@@ -120,7 +129,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     // Segue 準備
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "toSubViewController") {
-            let subVC: ViewController6 = segue.destinationViewController as ViewController6
+            let subVC: ViewController6 = segue.destinationViewController as! ViewController6
             subVC.selectedSectionNum = selectedSectionNum
             subVC.selectedItemNum = selectedItemNum
         }
@@ -137,11 +146,11 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     Cellに値を設定する.
     */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
         //var json:JSON = JSON(rawValue:GlobalData.getRefferenceList(indexPath.section)[indexPath.row])!
         //cell.textLabel?.text = json["name"].string
         
-        cell.textLabel?.text = GlobalData.getRefferenceList(indexPath.section)[indexPath.row]["name"] as NSString
+        cell.textLabel?.text = GlobalData.getRefferenceList(indexPath.section)[indexPath.row]["name"] as! NSString as String
         return cell
     }
     /*
@@ -153,7 +162,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
             refreshList(all:true)
         }
         else{
-            refreshList(text: text,perfectMatch:false)
+            refreshList(text,perfectMatch:false)
         }
     }
     
@@ -179,7 +188,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     func refreshList(text:String = "",all:Bool = false,perfectMatch: Bool = true){
         
         //GlobalData.arrayの作り直し
-        GlobalData.refreshList(text: text,all:all,perfectMatch:perfectMatch)
+        GlobalData.refreshList(text,all:all,perfectMatch:perfectMatch)
         
         //「セクションごとのarray」の作り直し
         GlobalData.refreshAllList()

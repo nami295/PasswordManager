@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "archiveText/ViewController3.swift"
-            timestampString = "463826904.62815"
+            timestampString = "464681734.706713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "searchBarSearchButtonClicked(_:)"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "searchBarCancelButtonClicked(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "archiveText/ViewController3.swift"
-            timestampString = "463826904.62815"
+            timestampString = "464681734.706713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "searchBarCancelButtonClicked(_:)"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -104,6 +104,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "archiveText.GlobalData.refreshAllList (archiveText.GlobalData.Type)() -&gt; ()"
                   moduleName = "archiveText"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ryo/Desktop/passwordManage2/archiveText/GlobalData.swift"
                   timestampString = "463809724.689375"
                   startingColumnNumber = "9223372036854775807"
@@ -118,6 +119,7 @@
                   continueAfterRunningActions = "No"
                   symbolName = "archiveText.GlobalData.refreshAllList (archiveText.GlobalData.Type)() -&gt; ()"
                   moduleName = "archiveText"
+                  usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ryo/Desktop/passwordManage2/archiveText/GlobalData.swift"
                   timestampString = "463809724.689813"
                   startingColumnNumber = "9223372036854775807"
@@ -142,6 +144,38 @@
             startingLineNumber = "574"
             endingLineNumber = "574"
             landmarkName = "refreshAllList()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "archiveText/ViewController3.swift"
+            timestampString = "464666731.136208"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "archiveText/ViewController7.swift"
+            timestampString = "464681917.719714"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
