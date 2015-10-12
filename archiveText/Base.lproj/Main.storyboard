@@ -64,7 +64,7 @@
                                 </connections>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="lKA-fg-Ivc" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="20" id="4IQ-Hc-dpK"/>
                             <constraint firstItem="PgW-vf-IpB" firstAttribute="leading" secondItem="MAF-GK-sqH" secondAttribute="leading" id="8i7-C4-GMf"/>
@@ -165,10 +165,9 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyL-8h-4qa">
-                                <rect key="frame" x="241" y="340" width="118" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="241" y="345" width="118" height="30"/>
                                 <state key="normal" title="Delete">
-                                    <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -177,13 +176,13 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="3eC-10-ct7" firstAttribute="centerX" secondItem="i0g-5C-S4q" secondAttribute="centerX" id="0rk-wJ-wOp"/>
                             <constraint firstItem="mR3-Sv-iMe" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="20" id="1l1-vQ-RVI"/>
                             <constraint firstItem="3eC-10-ct7" firstAttribute="leading" secondItem="Ezn-c4-0Ce" secondAttribute="leading" id="2K3-wP-7OX"/>
                             <constraint firstItem="QuD-el-e7F" firstAttribute="centerX" secondItem="i0g-5C-S4q" secondAttribute="centerX" id="9ME-rm-gaF"/>
-                            <constraint firstItem="jyL-8h-4qa" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="55" id="Atm-4D-l08"/>
+                            <constraint firstItem="jyL-8h-4qa" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="60" id="Atm-4D-l08"/>
                             <constraint firstItem="3eC-10-ct7" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="-50" id="En3-CF-9K7"/>
                             <constraint firstItem="jyL-8h-4qa" firstAttribute="centerX" secondItem="i0g-5C-S4q" secondAttribute="centerX" id="FV8-6U-x2U"/>
                             <constraint firstItem="Ezn-c4-0Ce" firstAttribute="centerY" secondItem="i0g-5C-S4q" secondAttribute="centerY" constant="-120" id="Fw3-fG-cPg"/>
@@ -308,6 +307,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="g8S-ZM-Wib"/>
+        <segue reference="Yw0-iv-nBj"/>
     </inferredMetricsTieBreakers>
 </document>

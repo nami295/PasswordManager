@@ -46,6 +46,7 @@ class ViewController6: UIViewController {
     @IBOutlet weak var changeButton: UIBarButtonItem!
     
     private var bannerView_: GADBannerView!
+    let headerHeight:CGFloat = 65;
     
     //名前
     @IBAction func editingChanged(sender: AnyObject) {
@@ -249,8 +250,10 @@ class ViewController6: UIViewController {
         bannerView_.frame = CGRectMake(0, 0, displayWidth, 40)
         bannerView_.layer.position = CGPoint(
             x: self.view.bounds.width/2,
-            y: 80)
-        self.view.addSubview(bannerView_)
+            y: headerHeight + bannerView_.frame.height/2)
+        if(GlobalData.validAd){
+            self.view.addSubview(bannerView_)
+        }
         
         controlRegisterButton()
     }

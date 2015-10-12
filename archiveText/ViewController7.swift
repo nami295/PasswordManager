@@ -12,6 +12,7 @@ import GoogleMobileAds
 //サマリ
 class ViewController7: UIViewController {
     private var bannerView_: GADBannerView!
+    let headerHeight:CGFloat = 65;
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,12 +69,25 @@ class ViewController7: UIViewController {
         bannerView_.rootViewController = self;
         let request: GADRequest = GADRequest();
         bannerView_.loadRequest(request);
-        bannerView_.frame = CGRectMake(0, 0, displayWidth, 50)
-        bannerView_.layer.position = CGPoint(x: self.view.bounds.width/2,y: 90)
-        self.view.addSubview(bannerView_)
+        bannerView_.frame = CGRectMake(0, 0, displayWidth, 40)
+        bannerView_.layer.position = CGPoint(
+            x: self.view.bounds.width/2,
+            y: headerHeight + bannerView_.frame.height/2)
+        if(GlobalData.validAd){
+            self.view.addSubview(bannerView_)
+        }
         
-        //テキストビュー
-        let padding = 65 + bannerView_.frame.height
+        //【テキストビュー】
+        //「パディング　＝　ヘッダの高さ　＋　バナー広告の高さ」
+        //　表示位置Yをパディングとし、テキストビューの高さを「全体高さ　ー　パディング」とする
+        
+        
+        //広告の有無で表示位置を決定する
+        var padding = headerHeight
+        //広告表示の場合広告バーの高さを足す
+        if(GlobalData.validAd){
+            padding += bannerView_.frame.height;
+        }
         let myTextView = UITextView(
             frame : CGRect(
                 x: 0,

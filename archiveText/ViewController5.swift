@@ -41,6 +41,7 @@ class ViewController5: UIViewController {
     @IBOutlet weak var registrButton: UIBarButtonItem!
     
     private var bannerView_: GADBannerView!
+    let headerHeight:CGFloat = 65;
     
     //名前
     @IBAction func editingChanged(sender: AnyObject) {
@@ -81,8 +82,10 @@ class ViewController5: UIViewController {
         bannerView_.frame = CGRectMake(0, 0, displayWidth, 40)
         bannerView_.layer.position = CGPoint(
             x: self.view.bounds.width/2,
-            y: 80)
-        self.view.addSubview(bannerView_)
+            y: headerHeight + bannerView_.frame.height/2)
+        if(GlobalData.validAd){
+            self.view.addSubview(bannerView_)
+        }
         
         controlRegisterButton()
     }
@@ -148,10 +151,12 @@ class ViewController5: UIViewController {
 //                    }
                 }
                 else{
+                    //読みがなはひらがなまたは英数字で入力してください
                     showAlert(NSLocalizedString("error_title", comment: ""), mySentence: NSLocalizedString("error_sentence1", comment: ""))
                 }
             }
             else{
+                //その名前はすでに使用されています
                 showAlert(NSLocalizedString("error_title", comment: ""), mySentence: NSLocalizedString("error_sentence2", comment: ""))
             }
         }catch{

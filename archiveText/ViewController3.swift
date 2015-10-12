@@ -15,6 +15,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     private var mySearchBar: UISearchBar!
     private var bannerView_: GADBannerView!
+    let headerHeight:CGFloat = 65;
     
     override func viewDidLoad() {
         
@@ -55,26 +56,39 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
         bannerView_.rootViewController = self;
         let request: GADRequest = GADRequest();
         bannerView_.loadRequest(request);
-        bannerView_.frame = CGRectMake(0, 0, displayWidth, 50)
+        bannerView_.frame = CGRectMake(0, 0, displayWidth, 40)
         bannerView_.layer.position = CGPoint(
             x: self.view.bounds.width/2,
-            y: 90)
+            y: headerHeight + bannerView_.frame.height/2)
         
         //検索バー
         mySearchBar = UISearchBar()
         mySearchBar.delegate = self
         mySearchBar.frame = CGRectMake(0, 0, displayWidth, 50)
+        
+        //広告の有無で表示位置を決定する
+        var pointY = headerHeight + mySearchBar.frame.height/2;
+        //広告表示の場合広告バーの高さを足す
+        if(GlobalData.validAd){
+            pointY += bannerView_.frame.height;
+        }
         mySearchBar.layer.position = CGPoint(
             x: self.view.bounds.width/2,
-            y: (90 + bannerView_.frame.height)
+            y: pointY
         )
         mySearchBar.showsCancelButton = true
         mySearchBar.showsBookmarkButton = false
         mySearchBar.searchBarStyle = UISearchBarStyle.Default
         mySearchBar.placeholder = NSLocalizedString("search", comment: "")
         mySearchBar.tintColor = UIColor.redColor()
+        
+        //検索バーの表示
         self.view.addSubview(mySearchBar)
-        self.view.addSubview(bannerView_)
+        
+        //広告バーの表示（フラグが立っている場合にのみ表示する）
+        if(GlobalData.validAd){
+            self.view.addSubview(bannerView_)
+        }
         
         //アカウントリスト
         createTableView()
@@ -83,7 +97,14 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     func createTableView(){
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
-        let padding = 65 + bannerView_.frame.height + mySearchBar.frame.height
+        
+        //広告の有無で表示位置を決定する
+        var padding = headerHeight + mySearchBar.frame.height
+        //広告表示の場合広告バーの高さを足す
+        if(GlobalData.validAd){
+            padding += bannerView_.frame.height;
+        }
+        
         let myTableView: UITableView = UITableView(
             frame: CGRect(
                 x: 0,

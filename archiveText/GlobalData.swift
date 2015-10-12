@@ -14,6 +14,7 @@ struct GlobalData{
     static var dir = ""
     static var filePath = ""
     static var array = []
+    static let validAd = true;
     
     static let sections = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","あ","か","さ","た","な","は","ま","や","ら","わ","other"]
     // Sectionで使用する配列を定義する.
