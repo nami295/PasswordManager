@@ -1,4 +1,4 @@
-//
+ //
 //  ViewController.swift
 //  UIKit019
 //
@@ -18,32 +18,11 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     let headerHeight:CGFloat = 65;
     
     override func viewDidLoad() {
-        
-//        print(GoogleMobileAds.GADRequest.sdkVersion);
         super.viewDidLoad()
-        
-        
-        //GlobalData.dir = NSHomeDirectory().stringByAppendingPathComponent("Documents");
-        //GlobalData.filePath = GlobalData.dir.stringByAppendingPathComponent("data.dat");
-        let dir = NSURL(fileURLWithPath: NSHomeDirectory()).URLByAppendingPathComponent("Documents").path!
-        let path = NSURL(fileURLWithPath: dir).URLByAppendingPathComponent("data.dat").path!
-        GlobalData.dir = dir
-        GlobalData.filePath = path
-        
-        
-        
         let fm = NSFileManager.defaultManager()
         if(!fm.fileExistsAtPath(GlobalData.filePath)){
             let arr = GlobalData.getAllArray()
-            
             NSKeyedArchiver.archiveRootObject(arr, toFile:GlobalData.filePath);
-//            let successful = NSKeyedArchiver.archiveRootObject(arr, toFile:GlobalData.filePath);
-//            if (successful) {
-//                print("データの追加に成功しました。（ファイル存在チェック）");
-//            }
-//            else{
-//                print("データの追加に失敗しました。（ファイル存在チェック）");
-//            }
         }
         GlobalData.array = NSKeyedUnarchiver.unarchiveObjectWithFile(GlobalData.filePath) as! NSArray
         

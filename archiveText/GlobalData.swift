@@ -11,8 +11,8 @@ import Foundation
 struct GlobalData{
     
     
-    static var dir = ""
-    static var filePath = ""
+    static let dir = NSURL(fileURLWithPath: NSHomeDirectory()).URLByAppendingPathComponent("Documents").path!;
+    static let filePath = NSURL(fileURLWithPath: NSHomeDirectory()).URLByAppendingPathComponent("Documents").URLByAppendingPathComponent("data.dat").path!;
     static var array = []
     static let validAd = true;
     
@@ -63,101 +63,100 @@ struct GlobalData{
     
     
     static func getAllArray() -> NSMutableArray{
-        let arr :NSMutableArray = []
-        for (var i=0;i<37;i++){
-            let a = getRefferenceList_(i)
-            for elem in a{
-                arr.addObject(elem)
+        let returnArray :NSMutableArray = []
+        for (var i = 0 ; i < 37 ; i++){
+            let list = getRefferenceList_(i)
+            for account in list{
+                returnArray.addObject(account)
             }
         }
-        return arr
+        return returnArray
     }
     
     static func removeAllArray(){
-        for (var i=0;i<37;i++){
-            let a = getRefferenceList_(i)
-            a.removeAllObjects()
+        for (var i = 0 ; i < 37 ; i++){
+            getRefferenceList_(i).removeAllObjects()
         }
     }
     
     static func getRefferenceList_(num:Int) -> NSMutableArray{
-                switch(num){
-                case 0:
-                    return item_a
-                case 1:
-                    return item_b
-                case 2:
-                    return item_c
-                case 3:
-                    return item_d
-                case 4:
-                    return item_e
-                case 5:
-                    return item_f
-                case 6:
-                    return item_g
-                case 7:
-                    return item_h
-                case 8:
-                    return item_i
-                case 9:
-                    return item_j
-                case 10:
-                    return item_k
-                case 11:
-                    return item_l
-                case 12:
-                    return item_m
-                case 13:
-                    return item_n
-                case 14:
-                    return item_o
-                case 15:
-                    return item_p
-                case 16:
-                    return item_q
-                case 17:
-                    return item_r
-                case 18:
-                    return item_s
-                case 19:
-                    return item_t
-                case 20:
-                    return item_u
-                case 21:
-                    return item_v
-                case 22:
-                    return item_w
-                case 23:
-                    return item_x
-                case 24:
-                    return item_y
-                case 25:
-                    return item_z
-                case 26:
-                    return item_あ
-                case 27:
-                    return item_か
-                case 28:
-                    return item_さ
-                case 29:
-                    return item_た
-                case 30:
-                    return item_な
-                case 31:
-                    return item_は
-                case 32:
-                    return item_ま
-                case 33:
-                    return item_や
-                case 34:
-                    return item_ら
-                case 35:
-                    return item_わ
-                default:
-                    return item_other
-                }
-    }
+        switch(num){
+            case 0:
+                return item_a
+            case 1:
+                return item_b
+            case 2:
+                return item_c
+            case 3:
+                return item_d
+            case 4:
+                return item_e
+            case 5:
+                return item_f
+            case 6:
+                return item_g
+            case 7:
+                return item_h
+            case 8:
+                return item_i
+            case 9:
+                return item_j
+            case 10:
+                return item_k
+            case 11:
+                return item_l
+            case 12:
+                return item_m
+            case 13:
+                return item_n
+            case 14:
+                return item_o
+            case 15:
+                return item_p
+            case 16:
+                return item_q
+            case 17:
+                return item_r
+            case 18:
+                return item_s
+            case 19:
+                return item_t
+            case 20:
+                return item_u
+            case 21:
+                return item_v
+            case 22:
+                return item_w
+            case 23:
+                return item_x
+            case 24:
+                return item_y
+            case 25:
+                return item_z
+            case 26:
+                return item_あ
+            case 27:
+                return item_か
+            case 28:
+                return item_さ
+            case 29:
+                return item_た
+            case 30:
+                return item_な
+            case 31:
+                return item_は
+            case 32:
+                return item_ま
+            case 33:
+                return item_や
+            case 34:
+                return item_ら
+            case 35:
+                return item_わ
+            default:
+                return item_other
+        }
+   }
     
     static func getRefferenceList(num:Int) -> NSMutableArray{
         let secPrefix: String = mySections[num] as! String
@@ -439,13 +438,26 @@ struct GlobalData{
         }
     }
     
-    ///正規表現にマッチする要素でGlobalData.arrayを作り直す
+    /**
+    正規表現にマッチする要素でGlobalData.arrayを作り直す
+    - parameter text:対象としたいオブジェクトを表す正規表現
+    - parameter matchValid:
+    - parameter all:全てを対象としたい場合、trueを設定する
+    - parameter perfectMatch:完全一致フラグ
+    */
     static func refreshList(text :String = "",matchValid: Bool = true,all:Bool = false,perfectMatch: Bool = true){
         
         GlobalData.array = getNewList(text, matchValid:matchValid,all:all,perfectMatch:perfectMatch)
     }
     
-    //正規表現にマッチする要素でarrayを取得する
+    /**
+    正規表現にマッチする要素でarrayを取得する
+    - parameter text:対象としたいオブジェクトを表す正規表現
+    - parameter matchValid:
+    - parameter all:全てを対象としたい場合、trueを設定する
+    - parameter perfectMatch:完全一致フラグ
+    - returns:正規表現にマッチしたオブジェクトが格納されたリスト
+    */
     static func getNewList(text :String = "",matchValid: Bool = true,all:Bool = false,perfectMatch: Bool = true) -> NSMutableArray{
         
         //
@@ -519,7 +531,7 @@ struct GlobalData{
         //セクションのリストを空に
         GlobalData.mySections.removeAllObjects()
         
-        
+        print(GlobalData.array)
         for elem in GlobalData.array{
             //var json:JSON = JSON(rawValue:elem)!
             //var str = json["nameKana"].string
@@ -542,7 +554,6 @@ struct GlobalData{
             arr.append(elem as! String)
         }
         //配列のソート
-//     rtInPlace {$0 < $1}
         arr.sortInPlace {$0 < $1}
         
         //セクションのリストを空に
