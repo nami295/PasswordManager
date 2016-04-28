@@ -10,7 +10,7 @@ import UIKit
 import GoogleMobileAds
 
 //サマリ
-class ViewController7: UIViewController {
+class ViewControllerSummary: UIViewController {
     private var bannerView_: GADBannerView!
     let headerHeight:CGFloat = 65;
 

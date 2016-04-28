@@ -10,7 +10,7 @@ import UIKit
 import GoogleMobileAds
 
 ///新規登録
-class ViewController5: UIViewController {
+class ViewControllerNew: UIViewController {
     
     @IBOutlet weak var nameText: UITextField!//1番目
     @IBOutlet weak var idText: UITextField!//3番目

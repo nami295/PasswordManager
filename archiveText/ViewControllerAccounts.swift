@@ -7,7 +7,7 @@ import UIKit
 import GoogleMobileAds
 
 ///一覧
-class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
+class ViewControllerAccounts: UIViewController, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
     
     
     var selectedSectionNum = 0
@@ -129,7 +129,7 @@ class ViewController3: UIViewController, UITableViewDelegate, UITableViewDataSou
     // Segue 準備
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "toSubViewController") {
-            let subVC: ViewController6 = segue.destinationViewController as! ViewController6
+            let subVC: ViewControllerEdit = segue.destinationViewController as! ViewControllerEdit
             subVC.selectedSectionNum = selectedSectionNum
             subVC.selectedItemNum = selectedItemNum
         }

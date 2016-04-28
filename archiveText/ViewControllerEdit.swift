@@ -10,7 +10,7 @@ import UIKit
 import GoogleMobileAds
 
 ///個別
-class ViewController6: UIViewController {
+class ViewControllerEdit: UIViewController {
     
     @IBOutlet weak var titleString: UINavigationItem!
     
@@ -18,10 +18,11 @@ class ViewController6: UIViewController {
     var selectedItemNum = 0
     var backUpName = ""
     @IBOutlet weak var nameText: UITextField!//1番目
-    @IBOutlet weak var idText: UITextField!//3番目
+//    @IBOutlet weak var idText: UITextField!//3番目
     @IBOutlet weak var passwordText: UITextField!//4番目
     @IBOutlet weak var mailText: UITextField!//5番目
     @IBOutlet weak var nameKanaText: UITextField!//2番目
+    @IBOutlet weak var idText: UITextField!
     
     @IBAction func nameDidEndOnExit(sender: AnyObject) {
         nameKanaText.becomeFirstResponder();

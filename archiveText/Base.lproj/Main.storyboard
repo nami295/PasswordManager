@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iNe-xC-MHP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iNe-xC-MHP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -9,10 +9,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--New Account-->
+        <!--New-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController5" customModule="archiveText" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" userLabel="New" customClass="ViewControllerNew" customModule="PasswordManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -110,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="1514" y="1059"/>
         </scene>
-        <!--Abc-->
+        <!--Edit-->
         <scene sceneID="uat-xB-eIH">
             <objects>
-                <viewController id="ajt-fw-rDH" customClass="ViewController6" customModule="archiveText" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ajt-fw-rDH" userLabel="Edit" customClass="ViewControllerEdit" customModule="PasswordManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9OU-3N-PFt"/>
                         <viewControllerLayoutGuide type="bottom" id="Ahy-3A-vH8"/>
@@ -197,7 +197,7 @@
                             <constraint firstItem="mR3-Sv-iMe" firstAttribute="leading" secondItem="Ezn-c4-0Ce" secondAttribute="leading" id="ram-bX-I0l"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Abc" id="Ju4-P0-AJ9">
+                    <navigationItem key="navigationItem" title="hoge" id="Ju4-P0-AJ9">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="TKI-L1-GbG">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gOI-Kv-GQT">
                                 <rect key="frame" x="515" y="7" width="65" height="30"/>
@@ -214,7 +214,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="changeButton" destination="TKI-L1-GbG" id="nDv-4a-FnT"/>
-                        <outlet property="idText" destination="3eC-10-ct7" id="b6m-av-XMQ"/>
+                        <outlet property="idText" destination="3eC-10-ct7" id="foa-KQ-Nkj"/>
                         <outlet property="mailText" destination="mR3-Sv-iMe" id="IIU-e0-Lge"/>
                         <outlet property="nameKanaText" destination="QuD-el-e7F" id="42F-pg-9IQ"/>
                         <outlet property="nameText" destination="Ezn-c4-0Ce" id="3Cx-8g-1ke"/>
@@ -226,10 +226,10 @@
             </objects>
             <point key="canvasLocation" x="1226" y="2005"/>
         </scene>
-        <!--View Controller7-->
+        <!--Summary-->
         <scene sceneID="e6W-cd-oJK">
             <objects>
-                <viewController id="2u4-Gr-JDC" customClass="ViewController7" customModule="archiveText" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2u4-Gr-JDC" userLabel="Summary" customClass="ViewControllerSummary" customModule="PasswordManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aiX-2I-iP9"/>
                         <viewControllerLayoutGuide type="bottom" id="rPY-Uu-nw0"/>
@@ -244,10 +244,10 @@
             </objects>
             <point key="canvasLocation" x="692" y="350"/>
         </scene>
-        <!--All Accounts-->
+        <!--Accounts-->
         <scene sceneID="nev-9S-Gb1">
             <objects>
-                <viewController id="cfL-PE-XRH" customClass="ViewController3" customModule="archiveText" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cfL-PE-XRH" userLabel="Accounts" customClass="ViewControllerAccounts" customModule="PasswordManager" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="peW-Aj-dZ3"/>
                         <viewControllerLayoutGuide type="bottom" id="qaA-T2-Cec"/>
